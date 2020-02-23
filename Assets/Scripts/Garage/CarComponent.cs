@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CarComponent : MonoBehaviour
 {
+    public float weight;
+
     //This will get added in later
     class Weapon : CarComponent
     {

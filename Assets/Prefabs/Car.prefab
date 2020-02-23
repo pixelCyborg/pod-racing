@@ -5262,21 +5262,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e4301961d29a04bafd24f9e7fe9acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnRaceComplete:
+    m_PersistentCalls:
+      m_Calls: []
   roadLayer:
     serializedVersion: 2
     m_Bits: 512
   hoverDistance: 2
   followedCamera: {fileID: 0}
   speedFovDistortion: 35
+  currentFuel: 0
   acceleration: 0.14
   velocityDrag: 0.98
   boostFactor: 1.33
-  currentFuel: 0
   boostCapacity: 100
   boostCost: 25
   boostRegen: 15
-  driftDrag: 0.998
-  driftMaxTurn: 4
   strafeSpeed: 2.5
   maxStrafe: 4
   strafeDrag: 0.9
@@ -5291,6 +5292,8 @@ MonoBehaviour:
   engineSource: {fileID: 0}
   boostSource: {fileID: 0}
   strafeSource: {fileID: 3366917390150744823}
+  isPlayer: 0
+  lapTimes: []
 --- !u!95 &3366917390609428487
 Animator:
   serializedVersion: 3
