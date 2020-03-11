@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 250, y: 250, z: 1}
   m_Children: []
   m_Father: {fileID: 3366917390609428485}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &1649033496
 SpriteRenderer:
@@ -103,8 +103,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7448806991845943437}
-  - component: {fileID: 9056418025691328707}
-  - component: {fileID: 8124329696943719805}
   - component: {fileID: 3200671634520304065}
   m_Layer: 0
   m_Name: Mesh
@@ -123,59 +121,10 @@ Transform:
   m_LocalRotation: {x: -0.49991274, y: 0.5000872, z: 0.49991298, w: 0.5000872}
   m_LocalPosition: {x: 0.000000059604645, y: 0, z: -0.4117418}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_Children:
-  - {fileID: 3366917391342299923}
-  - {fileID: 3366917390598209833}
+  m_Children: []
   m_Father: {fileID: 3366917390609428485}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 89.98}
---- !u!33 &9056418025691328707
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3200671634520304064}
-  m_Mesh: {fileID: -5495902117074765545, guid: 1d0da2dd6e831e94aa8231d652e62002, type: 3}
---- !u!23 &8124329696943719805
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3200671634520304064}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: e9a4835693d0e734aa1695821373365a, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!65 &3200671634520304065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -341,13 +290,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3366917390514485604}
-  m_LocalRotation: {x: 0.00000037811688, y: 0.6939013, z: 0.00000023841852, w: 0.72007006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.490055, y: 2, z: -0.06998956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3366917390598209833}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -2.121, y: 89.999, z: -89.98}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3366917390514485607
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -982,7 +931,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 90, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -5081,6 +5030,7 @@ GameObject:
   - component: {fileID: 3366917390598209833}
   - component: {fileID: 3366917390598209834}
   - component: {fileID: 3366917390598209835}
+  - component: {fileID: 7194489685351684543}
   m_Layer: 0
   m_Name: BoostParticles
   m_TagString: Untagged
@@ -5095,14 +5045,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3366917390598209832}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.49991268, y: 0.5000872, z: 0.49991295, w: 0.5000872}
+  m_LocalPosition: {x: 0, y: 0, z: -0.41173002}
+  m_LocalScale: {x: 0.40000007, y: 0.40000007, z: 0.40000007}
   m_Children:
   - {fileID: 3366917391786178117}
   - {fileID: 3366917390514485605}
-  m_Father: {fileID: 7448806991845943437}
-  m_RootOrder: 1
+  m_Father: {fileID: 3366917390609428485}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3366917390598209834
 MonoBehaviour:
@@ -5212,6 +5162,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7194489685351684543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3366917390598209832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6951ad04d65b8cb44b52827e75608e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3366917390609428484
 GameObject:
   m_ObjectHideFlags: 0
@@ -5246,6 +5208,8 @@ Transform:
   m_Children:
   - {fileID: 7448806991845943437}
   - {fileID: 3366917390150744822}
+  - {fileID: 3366917391342299923}
+  - {fileID: 3366917390598209833}
   - {fileID: 1649033495}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5262,21 +5226,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e4301961d29a04bafd24f9e7fe9acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnRaceComplete:
+    m_PersistentCalls:
+      m_Calls: []
   roadLayer:
     serializedVersion: 2
     m_Bits: 512
   hoverDistance: 2
   followedCamera: {fileID: 0}
   speedFovDistortion: 35
+  currentFuel: 0
   acceleration: 0.14
   velocityDrag: 0.98
   boostFactor: 1.33
-  currentFuel: 0
   boostCapacity: 100
   boostCost: 25
   boostRegen: 15
-  driftDrag: 0.998
-  driftMaxTurn: 4
   strafeSpeed: 2.5
   maxStrafe: 4
   strafeDrag: 0.9
@@ -5291,6 +5256,9 @@ MonoBehaviour:
   engineSource: {fileID: 0}
   boostSource: {fileID: 0}
   strafeSource: {fileID: 3366917390150744823}
+  meshParent: {fileID: 7448806991845943437}
+  isPlayer: 0
+  lapTimes: []
 --- !u!95 &3366917390609428487
 Animator:
   serializedVersion: 3
@@ -5443,6 +5411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3366917391342299923}
+  - component: {fileID: 1423280303043747428}
   m_Layer: 0
   m_Name: ExhaustParticles
   m_TagString: Untagged
@@ -5457,15 +5426,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3366917391342299922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.49991268, y: 0.5000872, z: 0.49991295, w: 0.5000872}
+  m_LocalPosition: {x: 0, y: 0, z: -0.41173002}
+  m_LocalScale: {x: 0.40000007, y: 0.40000007, z: 0.40000007}
   m_Children:
   - {fileID: 3366917391380171667}
   - {fileID: 3366917391739719193}
-  m_Father: {fileID: 7448806991845943437}
-  m_RootOrder: 0
+  m_Father: {fileID: 3366917390609428485}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1423280303043747428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3366917391342299922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6951ad04d65b8cb44b52827e75608e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3366917391380171666
 GameObject:
   m_ObjectHideFlags: 0
@@ -15213,13 +15194,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3366917391786178116}
-  m_LocalRotation: {x: 0.00000037811688, y: 0.6939013, z: 0.00000023841852, w: 0.72007006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.490055, y: -2, z: -0.06998956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3366917390598209833}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -2.121, y: 89.999, z: -89.98}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3366917391786178119
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -15854,7 +15835,7 @@ ParticleSystem:
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: 0, y: 90, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0

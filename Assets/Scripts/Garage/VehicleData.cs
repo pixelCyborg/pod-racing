@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class VehicleData
 {
     public float weight; //This should slow down acceleration a bit / decrease drag? (increased momentum)
@@ -28,4 +29,17 @@ public class VehicleData
     public float turnSpeed = 0.5f; //This stuff is similar to strafe
     public float maxTurn = 1.6f; //We don't want to turn too fast, or it'll confuse the player
     public float turnDrag = 0.66f; //Decellerate turn very quickly
+
+    //Location in the Reource folder of component prefabs
+    public string chassis;
+    public string wing;
+    public string engine;
+    public string booster;
+
+    public VehicleData()
+    {
+        chassis = "Car Pieces/Chassis/Med Chassis";
+        engine = "Car Pieces/Engine/Round Engine";
+        wing = "Car Pieces/Wings/Angled Wing";
+    }
 }

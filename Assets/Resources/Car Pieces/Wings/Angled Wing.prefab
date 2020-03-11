@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5f9b2f111bd0cf428207de2ef5d4b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: Car Pieces/Wings/Angled Wing
 --- !u!1 &6932909990240271117
 GameObject:
   m_ObjectHideFlags: 0

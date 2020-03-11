@@ -2,28 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Chassis : CarComponent
 {
     public Transform engineParent;
     public Transform wingParent;
 
-    public void SetEngine(Engine engine)
+    private Engine engine;
+    private Wing wing;
+
+    public void AttachParts()
     {
+        GameObject engine = Garage.GetEngine();
+        GameObject wing = Garage.GetWing();
+
+        if(engine != null) SetEngine(engine.GetComponent<Engine>());
+        if(wing != null) SetWing(wing.GetComponent<Wing>());
+    }
+
+    public void SetEngine(Engine _engine)
+    {
+        engine = _engine;
         ClearChildren(engineParent);
 
         for(int i = 0; i < engineParent.childCount; i++)
         {
-            SpawnToAnchor(engine.gameObject, engineParent.GetChild(i));
+            SpawnToAnchor(_engine.gameObject, engineParent.GetChild(i));
         }
     }
 
-    public void SetWing(Wing wing)
+    public void SetWing(Wing _wing)
     {
+        wing = _wing;
         ClearChildren(wingParent);
 
         for (int i = 0; i < wingParent.childCount; i++)
         {
-            SpawnToAnchor(wing.gameObject, wingParent.GetChild(i));
+            SpawnToAnchor(_wing.gameObject, wingParent.GetChild(i));
         }
     }
 
@@ -44,5 +59,10 @@ public class Chassis : CarComponent
                 Destroy(anchor.GetChild(n).gameObject);
             }
         }
+    }
+
+    private void SaveSetup()
+    {
+
     }
 }

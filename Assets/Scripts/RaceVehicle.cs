@@ -62,6 +62,9 @@ public class RaceVehicle : MonoBehaviour
     public AudioSource boostSource;
     public AudioSource strafeSource;
 
+    [Header("Mesh")]
+    public Transform meshParent;
+
     //Input values
     float turn;
     float throttle;
@@ -88,6 +91,7 @@ public class RaceVehicle : MonoBehaviour
     private int lap = 0;
     public List<float> lapTimes;
     private float currentPathPosition = 0;
+    private AnchorToEngines[] particleAnchors;
 
     //Unity engine physics
     Rigidbody body;
@@ -147,6 +151,11 @@ public class RaceVehicle : MonoBehaviour
         if (drifting) return;
         strafeSource?.Play();
         velocity_strafe = maxStrafe;
+    }
+
+    private void Awake()
+    {
+        particleAnchors = GetComponentsInChildren<AnchorToEngines>();
     }
 
     // Start is called before the first frame update
@@ -533,5 +542,38 @@ public class RaceVehicle : MonoBehaviour
         finishPosition = GetCurrentPosition();
         Debug.Log(name + " finished in " + finishPosition + "!");
         OnRaceComplete.Invoke();
+    }
+
+    public void LoadPlayerVehicle(string saveName = "")
+    {
+        if (saveName == "") saveName = "player";
+        VehicleData data = SaveLoadSystem.PlayerVehicle();
+        GameObject go = Resources.Load(data.chassis) as GameObject;
+        SpawnChassis(go.GetComponent<Chassis>());
+
+        for(int i = 0; i < particleAnchors.Length; i++)
+        {
+            particleAnchors[i].SnapToEngines(transform);
+        }
+    }
+
+    private void SpawnChassis(Chassis chassis)
+    {
+        ClearMesh();
+
+        GameObject go = Instantiate(chassis.gameObject);
+        go.transform.SetParent(meshParent);
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localRotation = Quaternion.identity;
+
+        go.GetComponent<Chassis>().AttachParts();
+    }
+
+    private void ClearMesh()
+    {
+        for(int i = meshParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(meshParent.GetChild(i).gameObject);
+        }
     }
 }

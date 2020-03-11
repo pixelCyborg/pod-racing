@@ -10,6 +10,7 @@ public class PlayerVehicleController : MonoBehaviour
     {
         vehicle = GetComponent<RaceVehicle>();
         vehicle.isPlayer = true;
+        vehicle.LoadPlayerVehicle();
         RaceTracker.instance.trackedVehicle = vehicle;
         vehicle.OnRaceComplete.AddListener(PlayerRaceComplete);
     }
