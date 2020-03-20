@@ -46,6 +46,7 @@ public class PlayerVehicleController : MonoBehaviour
     void PlayerRaceComplete()
     {
         UIManager.instance.RaceComplete();
+        vehicle.SetBoost(false);
         gameObject.AddComponent<AiVehicleController>();
         this.enabled = false;
     }

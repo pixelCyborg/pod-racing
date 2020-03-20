@@ -222,7 +222,10 @@ public class RaceVehicle : MonoBehaviour
 
         if (followedCamera)
         {
-            followedCamera.fieldOfView = origFov + (speedFovDistortion * CurrentOutOfMaxSpeed());
+            float amount = CurrentOutOfMaxSpeed();
+            if (amount > 1.0f) amount += (amount - 1f) * 3f;
+
+            followedCamera.fieldOfView = origFov + (speedFovDistortion * amount);
             HandleCameraShake();
         }
 
@@ -235,7 +238,7 @@ public class RaceVehicle : MonoBehaviour
 
         if (Speedometer.instance != null)
         {
-            Speedometer.instance.SetSpeed(velocity_throttle);
+            Speedometer.instance.SetSpeed(velocity_throttle, MaxSpeed());
             Speedometer.instance.SetStrafe(velocity_strafe);
         }
     }
@@ -376,7 +379,7 @@ public class RaceVehicle : MonoBehaviour
 
     private void UpdateEngineSound()
     {
-        engineSource.pitch = 1.0f + (CurrentOutOfMaxSpeed() * speedDetune);
+        engineSource.pitch = 1.0f+ (CurrentOutOfMaxSpeed() * speedDetune);
     }
 
     private void HandleCameraShake()
@@ -409,7 +412,7 @@ public class RaceVehicle : MonoBehaviour
     {
         float val = 0.0f;
         val = velocity_throttle / MaxSpeed();
-
+        Debug.Log(val);
         return val;
     }
 
@@ -458,9 +461,30 @@ public class RaceVehicle : MonoBehaviour
         return maxTurn;
     }
 
+    //Brute force solution then store the value. Math is for suckers.
+    private float maxSpeed = -1;
     private float MaxSpeed()
     {
-        return velocityDrag * (acceleration * 50f);
+        if (maxSpeed < 0)
+        {
+            float velocity  = 0f;
+            float decelleration = velocity * velocityDrag;
+            int failsafe = 0;
+
+            while (decelleration < (acceleration - 0.000001f) && failsafe < 2000)
+            {
+                velocity += acceleration;
+                decelleration = velocity * (1f - velocityDrag);
+                velocity *= velocityDrag;
+                //Debug.Log("(" + velocity + "," + decelleration + ")");
+
+                failsafe++;
+            }
+
+            maxSpeed = velocity;
+        }
+
+        return maxSpeed;
     }
 
     public Vector3 CurrentVelocity()

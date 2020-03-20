@@ -14,9 +14,11 @@ public class Speedometer : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void SetSpeed(float currentSpeed)
+    public void SetSpeed(float currentSpeed, float maxSpeed = -1)
     {
-        speedText.text = string.Format("{0:0.00}", currentSpeed * 10);
+        string text = string.Format("{0:0.00}", currentSpeed * 10);
+        if (maxSpeed > -1) text = text + " / " + string.Format("{0:0.00}", maxSpeed * 10);
+        speedText.text = text;
     }
 
     public void SetStrafe(float currentSpeed)
