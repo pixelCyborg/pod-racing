@@ -5,10 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class VehicleData
 {
-    public float weight; //This should slow down acceleration a bit / decrease drag? (increased momentum)
-
-    public float speed; //This will multiply acceleration, maxTurn, and maxStrafe
-    public float handling; //THIS will be the base stat for velocityDrag, strafeDrag, and turnDrag, multiplying them each by a handling amount
+    public float weight; //This increases max speed but decreases acceleration
+    public float handling; //Increases turn speed, strafe speed
 
     //Throttle / Main Engine
     public float acceleration = 0.14f; //Horsepower of the engine, more acceleration = more zoom zoom

@@ -5,6 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class Chassis : CarComponent
 {
+    [Header("Stats")]
+    public float weight = 1.0f; //This increases max speed but decreases acceleration
+    public float handling = 1.0f; //Increases turn speed, strafe speed
+
     public Transform engineParent;
     public Transform wingParent;
 
