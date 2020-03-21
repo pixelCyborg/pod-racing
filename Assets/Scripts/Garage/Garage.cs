@@ -67,18 +67,25 @@ public class Garage : MonoBehaviour
     public void SetChassis(Chassis chassis)
     {
         data.chassis = chassis.path;
+        data.weight = chassis.weight;
+        data.handling = chassis.handling;
         SpawnChassis(chassis);
     }
 
     public void SetEngine(Engine engine)
     {
         data.engine = engine.path;
+        data.acceleration = engine.acceleration;
+        data.velocityDrag = engine.velocityDrag;
         car.SetEngine(engine);
     }
 
     public void SetWing(Wing wing)
     {
         data.wing = wing.path;
+        data.turnSpeed = wing.turnSpeed;
+        data.maxTurn = wing.maxTurn;
+        data.turnDrag = wing.turnDrag;
         car.SetWing(wing);
     }
 

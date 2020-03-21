@@ -11,12 +11,14 @@ public class SaveLoadSystem
     public class SaveData
     {
         public string name;
+        public uint credits;
         public VehicleData vehicle;
 
         public SaveData(string _name)
         {
             name = _name;
             vehicle = new VehicleData();
+            credits = 0;
         }
     }
 
