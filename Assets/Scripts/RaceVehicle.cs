@@ -581,6 +581,11 @@ public class RaceVehicle : MonoBehaviour
         }
     }
 
+    private void UpdateStats()
+    {
+
+    }
+
     private void SpawnChassis(Chassis chassis)
     {
         ClearMesh();

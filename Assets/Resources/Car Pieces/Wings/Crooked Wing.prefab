@@ -124,3 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: Car Pieces/Wings/Crooked Wing
+  turnSpeed: 0.538
+  maxTurn: 1.755
+  turnDrag: 0.563

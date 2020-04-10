@@ -218,6 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: Car Pieces/Chassis/Light Chassis
+  weight: 0.7
+  handling: 1.276
   engineParent: {fileID: 3949926091199095340}
   wingParent: {fileID: 8873782948362220389}
 --- !u!1 &6551259876149830348

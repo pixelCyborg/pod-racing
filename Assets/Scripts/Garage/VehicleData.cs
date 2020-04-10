@@ -39,5 +39,6 @@ public class VehicleData
         chassis = "Car Pieces/Chassis/Med Chassis";
         engine = "Car Pieces/Engine/Round Engine";
         wing = "Car Pieces/Wings/Angled Wing";
+        booster = "Car Pieces/Booster/Yellow Booster";
     }
 }

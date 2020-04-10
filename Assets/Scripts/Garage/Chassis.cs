@@ -5,14 +5,22 @@ using UnityEngine;
 [System.Serializable]
 public class Chassis : CarComponent
 {
+    public const float MAX_WEIGHT = 1.5f;
+    public const float MIN_WEIGHT = 0.5f;
+    public const float MAX_HANDLING = 1.5f;
+    public const float MIN_HANDLING = 0.5f;
+
     [Header("Stats")]
+    [Range(MIN_WEIGHT, MAX_HANDLING)]
     public float weight = 1.0f; //This increases max speed but decreases acceleration
+    [Range(MIN_HANDLING, MAX_HANDLING)]
     public float handling = 1.0f; //Increases turn speed, strafe speed
 
+    [Header("Anchors")]
     public Transform engineParent;
     public Transform wingParent;
-
     private Engine engine;
+    private Booster booster;
     private Wing wing;
 
     public void AttachParts()
@@ -32,6 +40,17 @@ public class Chassis : CarComponent
         for(int i = 0; i < engineParent.childCount; i++)
         {
             SpawnToAnchor(_engine.gameObject, engineParent.GetChild(i));
+        }
+    }
+
+    public void SetBooster(Booster _booster)
+    {
+        booster = _booster;
+
+        for(int i = 0; i < engineParent.childCount; i++)
+        {
+            Engine _engine = engineParent.GetChild(i).GetComponentInChildren<Engine>();
+            _engine.SetBooster(_booster);
         }
     }
 
@@ -63,10 +82,5 @@ public class Chassis : CarComponent
                 Destroy(anchor.GetChild(n).gameObject);
             }
         }
-    }
-
-    private void SaveSetup()
-    {
-
     }
 }

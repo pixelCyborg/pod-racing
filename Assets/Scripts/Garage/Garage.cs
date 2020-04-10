@@ -12,6 +12,7 @@ public class Garage : MonoBehaviour
 
     private void Start()
     {
+        SaveLoadSystem.ClearSave();
         SceneManager.sceneUnloaded += ExitGarage;
         if (data == null) LoadVehicleData();
         SpawnVehicle();
@@ -47,7 +48,10 @@ public class Garage : MonoBehaviour
         go.transform.SetParent(podium);
         go.transform.localPosition = Vector3.zero;
         go.transform.localRotation = Quaternion.identity;
-        car.AttachParts();
+
+        SetEngine(GetEngine().GetComponent<Engine>());
+        SetWing(GetWing().GetComponent<Wing>());
+        SetBooster(GetBooster().GetComponent<Booster>());
     }
 
     public static GameObject GetWing()
@@ -62,6 +66,12 @@ public class Garage : MonoBehaviour
         return Resources.Load(data.engine) as GameObject;
     }
 
+    public static GameObject GetBooster()
+    {
+        if (string.IsNullOrEmpty(data.booster)) return null;
+        return Resources.Load(data.booster) as GameObject;
+    }
+
     //Data setting
 
     public void SetChassis(Chassis chassis)
@@ -69,6 +79,8 @@ public class Garage : MonoBehaviour
         data.chassis = chassis.path;
         data.weight = chassis.weight;
         data.handling = chassis.handling;
+
+
         SpawnChassis(chassis);
     }
 
@@ -77,7 +89,26 @@ public class Garage : MonoBehaviour
         data.engine = engine.path;
         data.acceleration = engine.acceleration;
         data.velocityDrag = engine.velocityDrag;
+
+        StatsDisplay.instance.UpdateAcceleration(engine.acceleration);
+        StatsDisplay.instance.UpdateMaxSpeed(engine.acceleration, engine.velocityDrag);
+
         car.SetEngine(engine);
+    }
+
+    public void SetBooster(Booster booster)
+    {
+        data.booster = booster.path;
+        data.boostCapacity = booster.boostCapacity;
+        data.boostCost = booster.boostCost;
+        data.boostFactor = booster.boostFactor;
+        data.boostRegen = booster.boostRegen;
+
+        StatsDisplay.instance.UpdateBoostEfficiency(booster.boostCapacity, booster.boostCost);
+        StatsDisplay.instance.UpdateBoostPower(booster.boostFactor);
+        StatsDisplay.instance.UpdateBoostRegen(booster.boostRegen);
+
+        car.SetBooster(booster);
     }
 
     public void SetWing(Wing wing)
@@ -86,6 +117,10 @@ public class Garage : MonoBehaviour
         data.turnSpeed = wing.turnSpeed;
         data.maxTurn = wing.maxTurn;
         data.turnDrag = wing.turnDrag;
+
+        StatsDisplay.instance.UpdateTurnspeed(wing.maxTurn);
+        StatsDisplay.instance.UpdateControl(wing.turnDrag);
+
         car.SetWing(wing);
     }
 
@@ -98,6 +133,11 @@ public class Garage : MonoBehaviour
     {
         SaveLoadSystem.Load();
         data = SaveLoadSystem.PlayerVehicle();
+    }
+
+    public void DeleteVehicleData()
+    {
+        SaveLoadSystem.ClearSave();
     }
 
     private void OnApplicationPause(bool pause)

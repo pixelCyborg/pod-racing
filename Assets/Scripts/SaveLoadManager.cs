@@ -69,6 +69,17 @@ public class SaveLoadSystem
         return Application.persistentDataPath + "/" + name + ".save";
     }
 
+    public static void ClearSave(string saveName = "")
+    {
+        if (saveName == "") saveName = "player";
+
+        string filePath = SavePath(saveName);
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+    }
+
     public static VehicleData PlayerVehicle()
     {
         if (currentSave == null) Load();
