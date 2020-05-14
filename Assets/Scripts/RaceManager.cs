@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class RaceManager : MonoBehaviour
 {
+    public static RaceData raceData;
+
     public int laps = 3;
     private int currentLap = 0;
 
@@ -18,9 +20,14 @@ public class RaceManager : MonoBehaviour
     [HideInInspector]
     public bool raceStarted;
 
+    [HideInInspector]
     public List<RaceVehicle> racers;
 
+    [HideInInspector]
     public UnityEvent OnRaceComplete;
+
+    public RaceVehicle defaultRacer;
+    public int participants;
 
     // Start is called before the first frame update
     private void Awake()
@@ -30,6 +37,7 @@ public class RaceManager : MonoBehaviour
 
     void Start()
     {
+        SpawnRacers();
         racers = new List<RaceVehicle>(FindObjectsOfType<RaceVehicle>());
         lapTimes = new List<float>();
         raceStarted = false;
@@ -41,6 +49,18 @@ public class RaceManager : MonoBehaviour
         racers.Sort((a, b) => a.RacePosition().CompareTo(b.RacePosition()));
         racers.Reverse();
         PositionTracker.vehicles = racers;
+    }
+
+    private void SpawnRacers()
+    {
+        if (defaultRacer == null) return;
+
+        RaceSlot[] slots = FindObjectsOfType<RaceSlot>();
+        for(int i = 0; i < participants; i++)
+        {
+            slots[i].SpawnRacer(defaultRacer.gameObject);
+        }
+
     }
 
     IEnumerator StartCountdown()

@@ -13,6 +13,7 @@ public class RaceVehicle : MonoBehaviour
     public float hoverDistance = 2.0f;
     public Camera followedCamera;
     private CameraShake camShake;
+    private UnityEngine.Rendering.Universal.PostProcessData postProcess;
     public float speedFovDistortion = 10f;
     private float origFov;
 
@@ -51,7 +52,9 @@ public class RaceVehicle : MonoBehaviour
     public float shakeThreshold = 0.92f;
     public float shakeAmount = 0.1f;
     public float magnetizeSpeed = 3.0f;
-    public ParticleSwitch boostParticles;
+    public ParticleSwitch engineParticles;
+    public ParticleSwitch boostTrails;
+    public ParticleSwitch windstreaks;
     //=====================================================
 
     [Header("Audio")]
@@ -92,6 +95,7 @@ public class RaceVehicle : MonoBehaviour
     public List<float> lapTimes;
     private float currentPathPosition = 0;
     private AnchorToEngines[] particleAnchors;
+    private List<Animator> particleAnims;
 
     //Unity engine physics
     Rigidbody body;
@@ -131,7 +135,8 @@ public class RaceVehicle : MonoBehaviour
                 boostSource.Stop();
             }
         }
-        boosting = _boost;   
+        boosting = _boost;
+        UpdateParticleAnims("boosting", _boost);
     }
 
     public void SetDrift(bool _drift)
@@ -156,6 +161,11 @@ public class RaceVehicle : MonoBehaviour
     private void Awake()
     {
         particleAnchors = GetComponentsInChildren<AnchorToEngines>();
+        particleAnims = new List<Animator>();
+        for(int i = 0; i < particleAnchors.Length; i++)
+        {
+            particleAnims.AddRange(particleAnchors[i].GetComponentsInChildren<Animator>());
+        }
     }
 
     // Start is called before the first frame update
@@ -164,9 +174,11 @@ public class RaceVehicle : MonoBehaviour
         currentFuel = boostCapacity;
         body = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        boostTrails.SwitchOff();
+        engineParticles.SwitchOff();
 
         if(engineSource == null) engineSource = GetComponent<AudioSource>();
-        if (boostSource == null) boostSource = boostParticles.GetComponent<AudioSource>();
+        if (boostSource == null) boostSource = engineParticles.GetComponent<AudioSource>();
 
         if(engineSource != null)
         {
@@ -188,23 +200,42 @@ public class RaceVehicle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (throttle > 0.1f) engineParticles.SwitchOn();
+        else engineParticles.SwitchOff();
+
+        if (CurrentOutOfMaxSpeed() > 1.1f)
+        {
+            if (windstreaks != null)
+            {
+                windstreaks.SwitchOn();
+            }
+        }
+        else
+        {
+            if(windstreaks) windstreaks.SwitchOff();
+        }
+
         if(boosting)
         {
             if (currentFuel > 1)
             {
-                boostParticles.SwitchOn();
+                boostTrails.SwitchOn();
                 currentFuel -= boostCost * Time.deltaTime;
+                if (isPlayer) SpeedLinesOverlay.On();
             }
             //Dont regen fuel until no longer boosting
             else {
-                boostParticles.SwitchOff();
+                boostTrails.SwitchOff();
+                if (isPlayer) SpeedLinesOverlay.Off();
             }
         }
         else if (currentFuel < boostCapacity)
         {
-            boostParticles.SwitchOff();
+            boostTrails.SwitchOff();
             currentFuel += boostRegen * Time.deltaTime;
             if (currentFuel > boostCapacity) currentFuel = boostCapacity;
+
+            if (isPlayer) SpeedLinesOverlay.Off();
         }
 
         if (drifting)
@@ -223,7 +254,8 @@ public class RaceVehicle : MonoBehaviour
         if (followedCamera)
         {
             float amount = CurrentOutOfMaxSpeed();
-            if (amount > 1.0f) amount += (amount - 1f) * 3f;
+            if (amount > 1.0f) amount += (amount - 1f) * 5f;
+            //if (amount > 1.66f) amount = 1.66f;
 
             followedCamera.fieldOfView = origFov + (speedFovDistortion * amount);
             HandleCameraShake();
@@ -324,10 +356,7 @@ public class RaceVehicle : MonoBehaviour
 
     void UpdatePosition()
     {
-        Vector3 velocity = drifting ? driftDirection * velocity_throttle : transform.forward * velocity_throttle;
-        velocity += transform.right * velocity_strafe;
-        velocity += inertia;
-        transform.position += velocity;
+        Vector3 velocity = GetVelocity();
         currentVel = velocity;
 
         //Rotation
@@ -335,18 +364,28 @@ public class RaceVehicle : MonoBehaviour
         transform.Rotate(Vector3.up, velocity_turn, Space.Self);
     }
 
+    Vector3 GetVelocity()
+    {
+        Vector3 velocity = drifting? driftDirection *velocity_throttle : transform.forward* velocity_throttle;
+        velocity += transform.right * velocity_strafe;
+        velocity += inertia;
+        transform.position += velocity;
+        return velocity;
+    }
+
     void UpdateVelocities()
     {
 
         velocity_strafe *= strafeDrag;
-        velocity_throttle *= velocityDrag;
+        if(!drifting) velocity_throttle *= velocityDrag;
         velocity_turn *= turnDrag;
 
         if (Mathf.Abs(velocity_strafe) < 0.01f) velocity_strafe = 0f;
         if (Mathf.Abs(velocity_throttle) < 0.01f) velocity_throttle = 0f;
         if (Mathf.Abs(velocity_turn) < 0.01f) velocity_turn = 0f;
 
-        inertia *= velocityDrag;
+        //Inertia decays twice as fast because physics is a lie
+        inertia *=  0.95f;
 
         //Ensure no going through the road
         Vector3 down = -transform.up;
@@ -412,7 +451,6 @@ public class RaceVehicle : MonoBehaviour
     {
         float val = 0.0f;
         val = velocity_throttle / MaxSpeed();
-        Debug.Log(val);
         return val;
     }
 
@@ -431,7 +469,7 @@ public class RaceVehicle : MonoBehaviour
             avgContactPoint += collision.GetContact(i).normal;
         }
         avgContactPoint = avgContactPoint / collision.contactCount;
-        Collide(avgContactPoint);
+        Collide(avgContactPoint, collision.transform.tag == "Wall");
     }
 
     private void PreCheckCollision()
@@ -440,16 +478,20 @@ public class RaceVehicle : MonoBehaviour
         bool collisionImminent = Physics.SphereCast(transform.position, 1.0f, currentVel.normalized, out hit, currentVel.magnitude, everythingButRoads, QueryTriggerInteraction.Ignore);
         if(collisionImminent)
         {
-            Collide(hit.normal);
+            Collide(hit.normal, hit.transform.tag == "Wall");
         }
     }
 
-    private void Collide(Vector3 collisionNormal)
+    private void Collide(Vector3 collisionNormal, bool solid = false)
     {
         inertia = collisionNormal;
-        float forceMultiplier = velocity_throttle * 0.1f;
+        float forceMultiplier = velocity_throttle * (solid ? 1.5f : 0.2f);
         if (forceMultiplier < 2) forceMultiplier = 2;
-        inertia *= Mathf.Abs(Vector3.Angle(transform.forward, collisionNormal) / 180) * forceMultiplier;
+
+        float impactForce = Mathf.Abs(Vector3.Angle(transform.forward, collisionNormal) / 180);
+        impactForce = MathHelpers.ConvertRange(0.5f, 1.0f, 0.1f, 1.0f, impactForce);
+
+        inertia *= impactForce * forceMultiplier;
 
         Vector3 down = -transform.up;
         float dot = Vector3.Dot(inertia, down);
@@ -497,6 +539,24 @@ public class RaceVehicle : MonoBehaviour
         currentPathPosition = pathPosition;
     }
 
+    public void UpdateParticleAnims(string id, object val)
+    {
+        for(int i = 0; i < particleAnims.Count; i++)
+        {
+            if(val is bool)
+            {
+                particleAnims[i].SetBool(id, (bool)val);
+            }
+            else if(val is float)
+            {
+                particleAnims[i].SetFloat(id, (float)val);
+            }
+            else if(val is int)
+            {
+                particleAnims[i].SetInteger(id, (int)val);
+            }
+        }
+    }
 
     //Race positions
     public void Lap()
@@ -595,6 +655,8 @@ public class RaceVehicle : MonoBehaviour
         go.transform.localPosition = Vector3.zero;
         go.transform.localRotation = Quaternion.identity;
 
+        UpdateWindstreakMesh(go.GetComponent<MeshRenderer>());
+
         go.GetComponent<Chassis>().AttachParts();
     }
 
@@ -604,5 +666,18 @@ public class RaceVehicle : MonoBehaviour
         {
             Destroy(meshParent.GetChild(i).gameObject);
         }
+    }
+
+    private void UpdateWindstreakMesh(MeshRenderer meshRend)
+    {
+        ParticleSystem windParticles = windstreaks.GetComponent<ParticleSystem>();
+        ParticleSystem.ShapeModule shape = windParticles.shape;
+        shape.meshRenderer = meshRend;
+    }
+
+    //Environmental Stuff
+    public void Boost(float strength)
+    {
+        velocity_throttle *= strength;
     }
 }

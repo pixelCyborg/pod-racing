@@ -31,8 +31,7 @@ public class VertPathHelper : MonoBehaviour
         float turn = 0f;
 
         //The next point
-        //float closestPathTime = path.GetClosestTimeOnPath(origin.position + origin.forward * predictionDistance);
-        float closestPathTime = path.GetClosestTimeOnPath(origin.position);
+        float closestPathTime = GetPathTime(origin);
 
         Vector3 position = path.GetPointAtTime(closestPathTime + pathTimePrediction, EndOfPathInstruction.Loop);
         Vector3 directionToPath = position - origin.position;
@@ -40,12 +39,12 @@ public class VertPathHelper : MonoBehaviour
         float offset = Vector3.Distance(origin.position + origin.forward * predictionDistance, position);
 
         //add some stupid juice
-        distanceTurn += Random.Range(-25f, 25f);
+        distanceTurn += Random.Range(-5f, 5f);
         turn += distanceTurn;
 
         turn *= 0.1f;
         if (turn > 1.0f) turn = 1.0f;
-        if (turn < 1.0f) turn = -1.0f;
+        if (turn < -1.0f) turn = -1.0f;
 
         info.turn = turn;
         info.pathTime = closestPathTime;

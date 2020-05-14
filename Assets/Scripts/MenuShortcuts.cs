@@ -13,6 +13,7 @@ public class MenuShortcuts : MonoBehaviour
     public void LoadRace()
     {
         SceneFader.instance.QueueBaseScene("CarTest");
+        SceneFader.instance.QueueAdditiveScene("BaseScene");
         SceneFader.instance.QueueAdditiveScene("Race UI");
         SceneFader.instance.FadeOut();
     }

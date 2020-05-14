@@ -4799,7 +4799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: Car Pieces/Booster/Pink Booster
-  boostFactor: 1.4
+  boostFactor: 1.1
   boostCost: 40
   boostCapacity: 60
   boostRegen: 25

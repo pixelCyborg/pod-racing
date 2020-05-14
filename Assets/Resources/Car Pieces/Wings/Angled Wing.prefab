@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: Car Pieces/Wings/Angled Wing
+  turnSpeed: 0.5
+  maxTurn: 1.6
+  turnDrag: 0.66
 --- !u!1 &6932909990240271117
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +106,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3169d22e899ec343ac919f987852a11, type: 2}
+  - {fileID: 2100000, guid: e9a4835693d0e734aa1695821373365a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

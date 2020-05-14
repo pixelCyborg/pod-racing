@@ -58,6 +58,7 @@ public class SceneFader : MonoBehaviour
                 if(queuedScenes[i].mode == LoadSceneMode.Additive)
                     SceneManager.LoadScene(queuedScenes[i].scene, queuedScenes[i].mode);
             }
+            queuedScenes = new List<QueuedScene>();
         });
     }
 

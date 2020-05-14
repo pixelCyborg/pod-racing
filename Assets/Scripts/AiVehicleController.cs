@@ -6,13 +6,16 @@ public class AiVehicleController : MonoBehaviour
 {
     private RaceVehicle vehicle;
 
+    private const float SLOW_UPDATE_TIME = 0.05f;
     private bool consideringBoost = false;
     private bool boosting = false;
+    private float recommendedTurn = 0f;
 
     private void Start()
     {
         vehicle = GetComponent<RaceVehicle>();
         boosting = false;
+        StartCoroutine(SlowUpdate());
     }
 
     // Update is called once per frame
@@ -21,7 +24,8 @@ public class AiVehicleController : MonoBehaviour
         if (vehicle == null) return;
 
         //Set vehicle controls
-        vehicle.SetTurn(DetermineTurn());
+        recommendedTurn = DetermineTurn();
+
         vehicle.SetThrottle(DetermineThrottle());
         vehicle.SetBoost(ShouldBoost());
         vehicle.SetDrift(false);
@@ -35,6 +39,15 @@ public class AiVehicleController : MonoBehaviour
         if (strafe == 1)
         {
             vehicle.RStrafe();
+        }
+    }
+
+    IEnumerator SlowUpdate()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(SLOW_UPDATE_TIME);
+            vehicle.SetTurn(recommendedTurn);
         }
     }
 
