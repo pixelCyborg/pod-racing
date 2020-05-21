@@ -6,8 +6,6 @@ using UnityEngine.Events;
 public class RaceManager : MonoBehaviour
 {
     public static RaceData raceData;
-
-    public int laps = 3;
     private int currentLap = 0;
 
     public static RaceManager instance;
@@ -60,7 +58,6 @@ public class RaceManager : MonoBehaviour
         {
             slots[i].SpawnRacer(defaultRacer.gameObject);
         }
-
     }
 
     IEnumerator StartCountdown()
@@ -81,13 +78,13 @@ public class RaceManager : MonoBehaviour
         Debug.Log("Crossed checkpoint");
         currentLap++;
         lapTimes.Add(CurrentLapTime());
-        if (currentLap > laps) FinishRace();
+        if (currentLap > raceData.laps) FinishRace();
     }
 
     public int CurrentLap()
     {
         if (currentLap < 1) return 1;
-        if (currentLap > laps) return laps;
+        if (currentLap > raceData.laps) return raceData.laps;
         return currentLap;
     }
 

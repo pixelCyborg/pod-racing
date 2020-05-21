@@ -7,8 +7,15 @@ using DG.Tweening;
 public class DetailsUI : MonoBehaviour
 {
     public static DetailsUI instance;
+    public RaceData raceData;
     Vector3 origScale;
     float animTime = 0.33f;
+
+    public Text planet;
+    public Text planetDescription;
+    public Text courseName;
+    public Text courseDescription;
+    public Text rewards;
 
     private void Start()
     {
@@ -20,6 +27,16 @@ public class DetailsUI : MonoBehaviour
 
     public void Show()
     {
+        Show(new RaceData("Default", 1, 2000));
+    }
+
+    public void Show(RaceData race)
+    {
+        raceData = race;
+
+        courseName.text = race.courseName;
+        rewards.text = "Prize: " + race.prizePool;
+
         transform.DOScale(origScale, 0.2f).SetEase(Ease.OutCubic);
     }
 

@@ -45,9 +45,44 @@ public class PlayerVehicleController : MonoBehaviour
 
     void PlayerRaceComplete()
     {
+        Accountant.AddValue("Placement", CheckWinnings());
         UIManager.instance.RaceComplete();
         vehicle.SetBoost(false);
         gameObject.AddComponent<AiVehicleController>();
         this.enabled = false;
+    }
+
+    int CheckWinnings()
+    {
+        int winnings = 0;
+
+        for (int i = 0; i < PositionTracker.vehicles.Count; i++)
+        {
+            if(GameObject.ReferenceEquals(PositionTracker.vehicles[i].gameObject, vehicle.gameObject))
+            {
+                
+                //1st
+                if (i == 0)
+                {
+                    winnings = RaceManager.raceData.prizePool;
+                }
+                //2nd
+                else if(i == 1)
+                {
+                    winnings = (int)(RaceManager.raceData.prizePool * 0.5f);
+                }
+                //3rd
+                else if(i == 2)
+                {
+                    winnings = (int)(RaceManager.raceData.prizePool * 0.25f);
+                }
+                else
+                {
+                    //nothin
+                }
+            }
+        }
+
+        return winnings;
     }
 }

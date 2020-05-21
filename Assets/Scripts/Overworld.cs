@@ -31,4 +31,14 @@ public class Overworld : MonoBehaviour
             }
         }
     }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause) SaveLoadSystem.Save();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveLoadSystem.Save();
+    }
 }

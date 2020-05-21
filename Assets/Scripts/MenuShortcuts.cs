@@ -12,6 +12,8 @@ public class MenuShortcuts : MonoBehaviour
 
     public void LoadRace()
     {
+        RaceManager.raceData = DetailsUI.instance.raceData;
+
         SceneFader.instance.QueueBaseScene("CarTest");
         SceneFader.instance.QueueAdditiveScene("BaseScene");
         SceneFader.instance.QueueAdditiveScene("Race UI");
@@ -22,5 +24,15 @@ public class MenuShortcuts : MonoBehaviour
     {
         SceneFader.instance.QueueBaseScene("Garage");
         SceneFader.instance.FadeOut();
+    }
+
+    public void AddMoney(int amount)
+    {
+        CreditsTracker.AddCredits(amount);
+    }
+
+    public void ResetMoney()
+    {
+        CreditsTracker.AddCredits(-CreditsTracker.Credits());
     }
 }

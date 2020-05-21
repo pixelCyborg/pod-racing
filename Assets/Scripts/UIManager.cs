@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     {
         ToggleCanvasGroup(RaceUI, false);
         ToggleCanvasGroup(FinishUI, true);
+        FinishUI.GetComponent<RaceCompleteScreen>().TotalEarnings();
     }
 
     private void ToggleCanvasGroup(CanvasGroup group, bool enabled)

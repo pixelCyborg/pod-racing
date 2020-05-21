@@ -64,8 +64,8 @@ public class RaceTracker : MonoBehaviour
     {
         int lap = trackedVehicle.GetCurrentLap();
 
-        if (lap == RaceManager.instance.laps) lapCounter.text = "Final Lap";
-        else lapCounter.text = trackedVehicle.GetCurrentLap() + " / " + RaceManager.instance.laps;
+        if (lap == RaceManager.raceData.laps) lapCounter.text = "Final Lap";
+        else lapCounter.text = trackedVehicle.GetCurrentLap() + " / " + RaceManager.raceData.laps;
     }
 
    void UpdateLapTimes()

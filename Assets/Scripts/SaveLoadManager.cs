@@ -11,7 +11,7 @@ public class SaveLoadSystem
     public class SaveData
     {
         public string name;
-        public uint credits;
+        public int credits;
         public VehicleData vehicle;
 
         public SaveData(string _name)
@@ -30,6 +30,8 @@ public class SaveLoadSystem
         if (saveName == "") saveName = "player";
         if (currentSave == null) currentSave = new SaveData(saveName);
         currentSave.vehicle = Garage.data;
+        currentSave.credits = CreditsTracker.Credits();
+        Debug.Log("Saving " + currentSave.credits + " credits");
 
         //Start up the serializer and create a new save file
         BinaryFormatter bf = new BinaryFormatter();
@@ -55,6 +57,7 @@ public class SaveLoadSystem
             currentSave = (SaveData)bf.Deserialize(file);
             file.Close();
 
+            Debug.Log("Loading " + currentSave.credits + " credits");
             Garage.data = currentSave.vehicle;
         }
         else
@@ -84,5 +87,11 @@ public class SaveLoadSystem
     {
         if (currentSave == null) Load();
         return currentSave.vehicle;
+    }
+
+    public static int Credits()
+    {
+        if (currentSave == null) Load();
+        return currentSave.credits;
     }
 }
