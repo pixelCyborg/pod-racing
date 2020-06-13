@@ -29,16 +29,16 @@ public class VehicleData
     public float turnDrag = 0.66f; //Decellerate turn very quickly
 
     //Location in the Reource folder of component prefabs
-    public string chassis;
-    public string wing;
-    public string engine;
-    public string booster;
+    public PartsCollection.PartRef chassis;
+    public PartsCollection.PartRef wing;
+    public PartsCollection.PartRef engine;
+    public PartsCollection.PartRef booster;
 
     public VehicleData()
     {
-        chassis = "Car Pieces/Chassis/Med Chassis";
-        engine = "Car Pieces/Engine/Round Engine";
-        wing = "Car Pieces/Wings/Angled Wing";
-        booster = "Car Pieces/Booster/Yellow Booster";
+        chassis = PartsCollection.Instance.DefaultChassis();
+        engine = PartsCollection.Instance.DefaultEngine();
+        wing = PartsCollection.Instance.DefaultWings();
+        booster = PartsCollection.Instance.DefaultBooster();
     }
 }

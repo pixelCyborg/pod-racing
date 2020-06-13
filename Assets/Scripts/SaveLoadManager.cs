@@ -13,12 +13,20 @@ public class SaveLoadSystem
         public string name;
         public int credits;
         public VehicleData vehicle;
+        public List<PartsCollection.PartRef> ownedParts;
 
         public SaveData(string _name)
         {
             name = _name;
             vehicle = new VehicleData();
             credits = 0;
+            ownedParts = new List<PartsCollection.PartRef>();
+
+            //Add default parts
+            ownedParts.Add(new PartsCollection.PartRef(PartsDB.PartType.Engine, 0));
+            ownedParts.Add(new PartsCollection.PartRef(PartsDB.PartType.Chassis, 0));
+            ownedParts.Add(new PartsCollection.PartRef(PartsDB.PartType.Booster, 0));
+            ownedParts.Add(new PartsCollection.PartRef(PartsDB.PartType.Wing, 0));
         }
     }
 
@@ -31,6 +39,10 @@ public class SaveLoadSystem
         if (currentSave == null) currentSave = new SaveData(saveName);
         currentSave.vehicle = Garage.data;
         currentSave.credits = CreditsTracker.Credits();
+
+        PartsCollection.PartRef[] parts = PartsCollection.Instance.GetPartRefs(Garage.OwnedParts);
+        currentSave.ownedParts = new List<PartsCollection.PartRef>(parts);
+
         Debug.Log("Saving " + currentSave.credits + " credits");
 
         //Start up the serializer and create a new save file
@@ -56,8 +68,6 @@ public class SaveLoadSystem
             FileStream file = File.Open(SavePath(saveName), FileMode.Open);
             currentSave = (SaveData)bf.Deserialize(file);
             file.Close();
-
-            Debug.Log("Loading " + currentSave.credits + " credits");
             Garage.data = currentSave.vehicle;
         }
         else
@@ -93,5 +103,18 @@ public class SaveLoadSystem
     {
         if (currentSave == null) Load();
         return currentSave.credits;
+    }
+
+    public static PartsDB.Part[] OwnedParts()
+    {
+        if (currentSave == null) Load();
+        List<PartsDB.Part> ownedParts = new List<PartsDB.Part>();
+
+        for(int i = 0; i < currentSave.ownedParts.Count; i++)
+        {
+            ownedParts.Add(PartsCollection.Instance.GetPartFromRef(currentSave.ownedParts[i]));
+        }
+
+        return ownedParts.ToArray();
     }
 }

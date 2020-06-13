@@ -6,6 +6,15 @@ public class PlayerVehicleController : MonoBehaviour
 {
     private RaceVehicle vehicle;
 
+    private void Awake()
+    {
+        Transform startAnchor = GameObject.FindGameObjectWithTag("StartPosition")?.transform;
+        if(startAnchor)
+        {
+            transform.SetPositionAndRotation(startAnchor.position, startAnchor.rotation);
+        }
+    }
+
     private void Start()
     {
         vehicle = GetComponent<RaceVehicle>();

@@ -5206,7 +5206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8747fb43724656046a8e5f9ff4dc87f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laps: 1
   countdownTime: 3
   startTime: 0
   lapTimes: []
@@ -6027,6 +6026,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dd95db03a4036840ac1925713bfd71b, type: 3}
+--- !u!1 &1745295704949893793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1745295704747937133, guid: 9dd95db03a4036840ac1925713bfd71b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1745295704949893792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1745295704949893794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745295704949893793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458023549efad3e40896c6359444712b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3366917390555642760
 PrefabInstance:
   m_ObjectHideFlags: 0

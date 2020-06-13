@@ -312,7 +312,15 @@ public class RaceVehicle : MonoBehaviour
         }
         else
         {
-            ToggleCustomPhysics(false);
+            //If we've already started to clip through the floor, reset
+            if (Physics.Raycast(transform.position + (transform.up * hoverDistance * 0.5f), -transform.up, out hit, (hoverDistance * 5), roadLayer))
+            {
+                transform.position = hit.point + transform.up * hoverDistance * 0.2f;
+            }
+            else
+            {
+                ToggleCustomPhysics(false);
+            }
         }
     }
 
@@ -452,11 +460,6 @@ public class RaceVehicle : MonoBehaviour
         float val = 0.0f;
         val = velocity_throttle / MaxSpeed();
         return val;
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -632,7 +635,7 @@ public class RaceVehicle : MonoBehaviour
     {
         if (saveName == "") saveName = "player";
         VehicleData data = SaveLoadSystem.PlayerVehicle();
-        GameObject go = Resources.Load(data.chassis) as GameObject;
+        GameObject go = PartsCollection.Instance.GetPartFromRef(data.chassis).prefab;
         SpawnChassis(go.GetComponent<Chassis>());
 
         for(int i = 0; i < particleAnchors.Length; i++)

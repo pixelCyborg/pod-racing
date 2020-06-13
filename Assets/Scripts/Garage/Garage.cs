@@ -6,15 +6,37 @@ using UnityEngine.SceneManagement;
 public class Garage : MonoBehaviour
 {
     public static VehicleData data;
+    public static PartsDB.Part[] OwnedParts
+    {
+        get
+        {
+            if (ownedParts == null) ownedParts = SaveLoadSystem.OwnedParts();
+            return ownedParts;
+        }
+
+        set
+        {
+            ownedParts = value;
+        }
+    }
+    private static PartsDB.Part[] ownedParts;
+
+    public static Garage instance;
+
     public Transform podium;
     Chassis car;
     float speed = 15f;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
         SaveLoadSystem.ClearSave();
         SceneManager.sceneUnloaded += ExitGarage;
-        if (data == null) LoadVehicleData();
+        if (data == null || OwnedParts == null) LoadVehicleData();
         SpawnVehicle();
     }
 
@@ -35,7 +57,7 @@ public class Garage : MonoBehaviour
 
     private void SpawnVehicle()
     {
-        GameObject go = Resources.Load(data.chassis) as GameObject;
+        GameObject go = PartsCollection.Instance.GetPartFromRef(data.chassis).prefab;
         SpawnChassis(go.GetComponent<Chassis>());
     }
 
@@ -56,27 +78,52 @@ public class Garage : MonoBehaviour
 
     public static GameObject GetWing()
     {
-        if (string.IsNullOrEmpty(data.wing)) return null;
-        return Resources.Load(data.wing) as GameObject;
+        if (data.wing == null) return null;
+        return PartsCollection.Instance.GetPartFromRef(data.wing).prefab;
     }
 
     public static GameObject GetEngine()
     {
-        if (string.IsNullOrEmpty(data.engine)) return null;
-        return Resources.Load(data.engine) as GameObject;
+        if (data.engine == null) return null;
+        return PartsCollection.Instance.GetPartFromRef(data.engine).prefab;
     }
 
     public static GameObject GetBooster()
     {
-        if (string.IsNullOrEmpty(data.booster)) return null;
-        return Resources.Load(data.booster) as GameObject;
+        if (data.booster == null) return null;
+        return PartsCollection.Instance.GetPartFromRef(data.booster).prefab;
+    }
+
+    public PartsDB.Part[] GetParts(PartsDB.PartType type)
+    {
+        List<PartsDB.Part> parts = new List<PartsDB.Part>();
+        for(int i = 0; i < OwnedParts.Length; i++)
+        {
+            switch(type)
+            {
+                case PartsDB.PartType.Chassis:
+                    if (OwnedParts[i].prefab.GetComponent<Chassis>()) parts.Add(OwnedParts[i]);
+                    break;
+                case PartsDB.PartType.Engine:
+                    if (OwnedParts[i].prefab.GetComponent<Engine>()) parts.Add(OwnedParts[i]);
+                    break;
+                case PartsDB.PartType.Booster:
+                    if (OwnedParts[i].prefab.GetComponent<Booster>()) parts.Add(OwnedParts[i]);
+                    break;
+                case PartsDB.PartType.Wing:
+                    if (OwnedParts[i].prefab.GetComponent<Wing>()) parts.Add(OwnedParts[i]);
+                    break;
+            }
+        }
+
+        return parts.ToArray();
     }
 
     //Data setting
 
     public void SetChassis(Chassis chassis)
     {
-        data.chassis = chassis.path;
+        data.chassis = PartsCollection.Instance.GetPartRef(chassis.gameObject);
         data.weight = chassis.weight;
         data.handling = chassis.handling;
 
@@ -86,7 +133,7 @@ public class Garage : MonoBehaviour
 
     public void SetEngine(Engine engine)
     {
-        data.engine = engine.path;
+        data.engine = PartsCollection.Instance.GetPartRef(engine.gameObject);
         data.acceleration = engine.acceleration;
         data.velocityDrag = engine.velocityDrag;
 
@@ -98,7 +145,7 @@ public class Garage : MonoBehaviour
 
     public void SetBooster(Booster booster)
     {
-        data.booster = booster.path;
+        data.booster = PartsCollection.Instance.GetPartRef(booster.gameObject);
         data.boostCapacity = booster.boostCapacity;
         data.boostCost = booster.boostCost;
         data.boostFactor = booster.boostFactor;
@@ -113,7 +160,7 @@ public class Garage : MonoBehaviour
 
     public void SetWing(Wing wing)
     {
-        data.wing = wing.path;
+        data.wing = PartsCollection.Instance.GetPartRef(wing.gameObject);
         data.turnSpeed = wing.turnSpeed;
         data.maxTurn = wing.maxTurn;
         data.turnDrag = wing.turnDrag;
@@ -133,6 +180,7 @@ public class Garage : MonoBehaviour
     {
         SaveLoadSystem.Load();
         data = SaveLoadSystem.PlayerVehicle();
+        OwnedParts = SaveLoadSystem.OwnedParts();
     }
 
     public void DeleteVehicleData()

@@ -200,7 +200,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorPos(this RectTransform target, Vector2 endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorPos(this UnityEngine.RectTransform target, Vector2 endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.anchoredPosition, x => target.anchoredPosition = x, endValue, duration);
             t.SetOptions(snapping).SetTarget(target);
@@ -210,7 +210,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorPosX(this RectTransform target, float endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorPosX(this UnityEngine.RectTransform target, float endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.anchoredPosition, x => target.anchoredPosition = x, new Vector2(endValue, 0), duration);
             t.SetOptions(AxisConstraint.X, snapping).SetTarget(target);
@@ -220,7 +220,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorPosY(this RectTransform target, float endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorPosY(this UnityEngine.RectTransform target, float endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.anchoredPosition, x => target.anchoredPosition = x, new Vector2(0, endValue), duration);
             t.SetOptions(AxisConstraint.Y, snapping).SetTarget(target);
@@ -231,7 +231,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector3, Vector3, VectorOptions> DOAnchorPos3D(this RectTransform target, Vector3 endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector3, Vector3, VectorOptions> DOAnchorPos3D(this UnityEngine.RectTransform target, Vector3 endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector3, Vector3, VectorOptions> t = DOTween.To(() => target.anchoredPosition3D, x => target.anchoredPosition3D = x, endValue, duration);
             t.SetOptions(snapping).SetTarget(target);
@@ -241,7 +241,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector3, Vector3, VectorOptions> DOAnchorPos3DX(this RectTransform target, float endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector3, Vector3, VectorOptions> DOAnchorPos3DX(this UnityEngine.RectTransform target, float endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector3, Vector3, VectorOptions> t = DOTween.To(() => target.anchoredPosition3D, x => target.anchoredPosition3D = x, new Vector3(endValue, 0, 0), duration);
             t.SetOptions(AxisConstraint.X, snapping).SetTarget(target);
@@ -251,7 +251,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector3, Vector3, VectorOptions> DOAnchorPos3DY(this RectTransform target, float endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector3, Vector3, VectorOptions> DOAnchorPos3DY(this UnityEngine.RectTransform target, float endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector3, Vector3, VectorOptions> t = DOTween.To(() => target.anchoredPosition3D, x => target.anchoredPosition3D = x, new Vector3(0, endValue, 0), duration);
             t.SetOptions(AxisConstraint.Y, snapping).SetTarget(target);
@@ -261,7 +261,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector3, Vector3, VectorOptions> DOAnchorPos3DZ(this RectTransform target, float endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector3, Vector3, VectorOptions> DOAnchorPos3DZ(this UnityEngine.RectTransform target, float endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector3, Vector3, VectorOptions> t = DOTween.To(() => target.anchoredPosition3D, x => target.anchoredPosition3D = x, new Vector3(0, 0, endValue), duration);
             t.SetOptions(AxisConstraint.Z, snapping).SetTarget(target);
@@ -272,7 +272,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorMax(this RectTransform target, Vector2 endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorMax(this UnityEngine.RectTransform target, Vector2 endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.anchorMax, x => target.anchorMax = x, endValue, duration);
             t.SetOptions(snapping).SetTarget(target);
@@ -283,7 +283,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorMin(this RectTransform target, Vector2 endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOAnchorMin(this UnityEngine.RectTransform target, Vector2 endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.anchorMin, x => target.anchorMin = x, endValue, duration);
             t.SetOptions(snapping).SetTarget(target);
@@ -293,7 +293,7 @@ namespace DG.Tweening
         /// <summary>Tweens a RectTransform's pivot to the given value.
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOPivot(this RectTransform target, Vector2 endValue, float duration)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOPivot(this UnityEngine.RectTransform target, Vector2 endValue, float duration)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.pivot, x => target.pivot = x, endValue, duration);
             t.SetTarget(target);
@@ -302,7 +302,7 @@ namespace DG.Tweening
         /// <summary>Tweens a RectTransform's pivot X to the given value.
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOPivotX(this RectTransform target, float endValue, float duration)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOPivotX(this UnityEngine.RectTransform target, float endValue, float duration)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.pivot, x => target.pivot = x, new Vector2(endValue, 0), duration);
             t.SetOptions(AxisConstraint.X).SetTarget(target);
@@ -311,7 +311,7 @@ namespace DG.Tweening
         /// <summary>Tweens a RectTransform's pivot Y to the given value.
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOPivotY(this RectTransform target, float endValue, float duration)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOPivotY(this UnityEngine.RectTransform target, float endValue, float duration)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.pivot, x => target.pivot = x, new Vector2(0, endValue), duration);
             t.SetOptions(AxisConstraint.Y).SetTarget(target);
@@ -322,7 +322,7 @@ namespace DG.Tweening
         /// Also stores the RectTransform as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static TweenerCore<Vector2, Vector2, VectorOptions> DOSizeDelta(this RectTransform target, Vector2 endValue, float duration, bool snapping = false)
+        public static TweenerCore<Vector2, Vector2, VectorOptions> DOSizeDelta(this UnityEngine.RectTransform target, Vector2 endValue, float duration, bool snapping = false)
         {
             TweenerCore<Vector2, Vector2, VectorOptions> t = DOTween.To(() => target.sizeDelta, x => target.sizeDelta = x, endValue, duration);
             t.SetOptions(snapping).SetTarget(target);
@@ -339,7 +339,7 @@ namespace DG.Tweening
         /// 1 creates a full oscillation between the punch direction and the opposite direction,
         /// while 0 oscillates only between the punch and the start position</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static Tweener DOPunchAnchorPos(this RectTransform target, Vector2 punch, float duration, int vibrato = 10, float elasticity = 1, bool snapping = false)
+        public static Tweener DOPunchAnchorPos(this UnityEngine.RectTransform target, Vector2 punch, float duration, int vibrato = 10, float elasticity = 1, bool snapping = false)
         {
             return DOTween.Punch(() => target.anchoredPosition, x => target.anchoredPosition = x, punch, duration, vibrato, elasticity)
                 .SetTarget(target).SetOptions(snapping);
@@ -354,7 +354,7 @@ namespace DG.Tweening
         /// Setting it to 0 will shake along a single direction.</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
         /// <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
-        public static Tweener DOShakeAnchorPos(this RectTransform target, float duration, float strength = 100, int vibrato = 10, float randomness = 90, bool snapping = false, bool fadeOut = true)
+        public static Tweener DOShakeAnchorPos(this UnityEngine.RectTransform target, float duration, float strength = 100, int vibrato = 10, float randomness = 90, bool snapping = false, bool fadeOut = true)
         {
             return DOTween.Shake(() => target.anchoredPosition, x => target.anchoredPosition = x, duration, strength, vibrato, randomness, true, fadeOut)
                 .SetTarget(target).SetSpecialStartupMode(SpecialStartupMode.SetShake).SetOptions(snapping);
@@ -368,7 +368,7 @@ namespace DG.Tweening
         /// Setting it to 0 will shake along a single direction.</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
         /// <param name="fadeOut">If TRUE the shake will automatically fadeOut smoothly within the tween's duration, otherwise it will not</param>
-        public static Tweener DOShakeAnchorPos(this RectTransform target, float duration, Vector2 strength, int vibrato = 10, float randomness = 90, bool snapping = false, bool fadeOut = true)
+        public static Tweener DOShakeAnchorPos(this UnityEngine.RectTransform target, float duration, Vector2 strength, int vibrato = 10, float randomness = 90, bool snapping = false, bool fadeOut = true)
         {
             return DOTween.Shake(() => target.anchoredPosition, x => target.anchoredPosition = x, duration, strength, vibrato, randomness, fadeOut)
                 .SetTarget(target).SetSpecialStartupMode(SpecialStartupMode.SetShake).SetOptions(snapping);
@@ -384,7 +384,7 @@ namespace DG.Tweening
         /// <param name="numJumps">Total number of jumps</param>
         /// <param name="duration">The duration of the tween</param>
         /// <param name="snapping">If TRUE the tween will smoothly snap all values to integers</param>
-        public static Sequence DOJumpAnchorPos(this RectTransform target, Vector2 endValue, float jumpPower, int numJumps, float duration, bool snapping = false)
+        public static Sequence DOJumpAnchorPos(this UnityEngine.RectTransform target, Vector2 endValue, float jumpPower, int numJumps, float duration, bool snapping = false)
         {
             if (numJumps < 1) numJumps = 1;
             float startPosY = 0;
@@ -593,7 +593,7 @@ namespace DG.Tweening
             /// Converts the anchoredPosition of the first RectTransform to the second RectTransform,
             /// taking into consideration offset, anchors and pivot, and returns the new anchoredPosition
             /// </summary>
-            public static Vector2 SwitchToRectTransform(RectTransform from, RectTransform to)
+            public static Vector2 SwitchToRectTransform(UnityEngine.RectTransform from, UnityEngine.RectTransform to)
             {
                 Vector2 localPoint;
                 Vector2 fromPivotDerivedOffset = new Vector2(from.rect.width * 0.5f + from.rect.xMin, from.rect.height * 0.5f + from.rect.yMin);
