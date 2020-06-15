@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -477,6 +477,86 @@ Transform:
   m_Father: {fileID: 2028975859}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &266933875
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5845073662560765313, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_Name
+      value: BoostPadPreviewMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765313, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 485.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 275.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -632.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.08187635
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99664253
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 9.393001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845073662560765316, guid: 3e83124e83155f7478f46c05d8a942bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e83124e83155f7478f46c05d8a942bf, type: 3}
+--- !u!1 &266933876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5845073662560765313, guid: 3e83124e83155f7478f46c05d8a942bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 266933875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &303470507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -676,7 +756,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1154618813}
@@ -772,7 +852,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 42479015}
@@ -2321,10 +2401,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2825bc04fb102b34da6314bf0f113f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previewMesh: {fileID: 266933876}
   boostPadPrefab: {fileID: 5845073662560765313, guid: 3e83124e83155f7478f46c05d8a942bf,
     type: 3}
   boostpadRoot: {fileID: 1013767939}
   placeBoostpads: 0
+  lastRaycastHit: {x: 0, y: 0, z: 0}
 --- !u!1 &1153743901
 GameObject:
   m_ObjectHideFlags: 0
@@ -3061,7 +3143,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1774626978}

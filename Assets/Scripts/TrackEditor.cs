@@ -9,6 +9,9 @@ using UnityEditor;
 [ExecuteInEditMode]
 public class TrackEditor : MonoBehaviour
 {
+    public GameObject previewMesh;
+    public Vector3 rotationOffset = Vector3.zero;
+
     public GameObject boostPadPrefab;
     [HideInInspector]
     public Transform boostpadRoot;
@@ -102,32 +105,43 @@ public class TrackEditorUI : Editor
             HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
             Event e = Event.current;
 
+            RaycastHit hit;
+            if (Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out hit, 99999f, trackEditor.RoadMask()))
+            {
+                Quaternion targetRot = Quaternion.FromToRotation(trackEditor.transform.up, hit.normal) * trackEditor.boostPadPrefab.transform.rotation;
+
+                if (trackEditor.previewMesh != null)
+                {
+                    trackEditor.previewMesh.SetActive(true);
+                    trackEditor.previewMesh.transform.position = hit.point;
+
+                    Vector3 pathRot = VertPathHelper.instance.GetCurrentPointRotation(trackEditor.previewMesh.transform).eulerAngles;
+                    pathRot += trackEditor.rotationOffset;
+
+                    trackEditor.previewMesh.transform.rotation = Quaternion.Euler(pathRot);
+                }
+
+                if (e.type == EventType.MouseDown && e.button == 0)
+                {
+                    GameObject go = Instantiate(trackEditor.boostPadPrefab, hit.point, targetRot, trackEditor.boostpadRoot) as GameObject;
+                }
+            }
+            else
+            {
+                trackEditor.previewMesh.SetActive(false);
+            }
+
+
+            //End booster placement
             if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Escape)
             {
                 Debug.Log("Stop placing boosters");
                 trackEditor.placeBoostpads = false;
             }
-            else if (e.type == EventType.MouseDown && e.button == 0)
-            {
-                Debug.Log("Placing boostpad");
-                RaycastHit hit;
-                //Vector3 screenPosition = new Vector3(Event.current.mousePosition.x, Screen.height ;
-
-                if (Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out hit, 99999f, trackEditor.RoadMask()))
-                {
-                    Quaternion targetRot = Quaternion.FromToRotation(trackEditor.transform.up, hit.normal) * trackEditor.boostPadPrefab.transform.rotation;
-                    GameObject go = Instantiate(trackEditor.boostPadPrefab, hit.point, targetRot, trackEditor.boostpadRoot) as GameObject;
-                }
-
-                if (Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out hit, 99999f))
-                {
-                    trackEditor.lastRaycastHit = hit.point;
-                }
-                else
-                {
-                    trackEditor.lastRaycastHit = Vector3.zero;
-                }
-            }
+        }
+        else
+        {
+            trackEditor.previewMesh.SetActive(false);
         }
     }
 }

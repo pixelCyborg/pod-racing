@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
+[ExecuteInEditMode]
 public class VertPathHelper : MonoBehaviour
 {
     public struct TrackInfo
@@ -23,6 +24,13 @@ public class VertPathHelper : MonoBehaviour
         instance = this;
         path = GetComponent<PathCreator>().path;
         pathTimePrediction = (1.0f / path.length) * 2f;
+    }
+
+    public Quaternion GetCurrentPointRotation(Transform origin)
+    {
+        Vector3 euler = Vector3.zero;
+        float closestPathTime = GetPathTime(origin);
+        return path.GetRotation(closestPathTime, EndOfPathInstruction.Loop);
     }
 
     public TrackInfo GetNextPointDirection(Transform origin)
