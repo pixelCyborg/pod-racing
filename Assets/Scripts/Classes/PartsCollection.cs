@@ -12,7 +12,7 @@ public class PartsCollection : ScriptableObject
         {
             if (!_instance)
             {
-                _instance = Resources.FindObjectsOfTypeAll<PartsCollection>()?[0];
+                _instance = Resources.Load<PartsCollection>("PartsCollection");
             }
             return _instance;
         }

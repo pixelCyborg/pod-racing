@@ -5,12 +5,14 @@ using DG.Tweening;
 
 public class OverworldPlayer : MonoBehaviour
 {
+    public static OverworldPlayer instance;
     private float currentSpeed;
     public float speed = 5f;
     private float moving;
 
     private void Start()
     {
+        instance = this; 
         Overworld.instance.Move += Move;
     }
 
@@ -41,5 +43,10 @@ public class OverworldPlayer : MonoBehaviour
         {
             transform.DOMove(move, Vector3.Distance(transform.position, move) * 0.25f);
         });
+    }
+
+    public void Stop()
+    {
+        transform.DOKill();
     }
 }

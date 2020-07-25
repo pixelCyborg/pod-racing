@@ -28,17 +28,16 @@ public class AiVehicleController : MonoBehaviour
 
         vehicle.SetThrottle(DetermineThrottle());
         vehicle.SetBoost(ShouldBoost());
-        vehicle.SetDrift(false);
 
         int strafe = DetermineStrafe();
         if (strafe == -1)
         {
-            vehicle.LStrafe();
+            //Left strafe
         }
 
         if (strafe == 1)
         {
-            vehicle.RStrafe();
+            //Right strafe
         }
     }
 

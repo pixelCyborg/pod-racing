@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5081,6 +5081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionTime: 0.33
+  planetOffset: {x: 0, y: 3, z: -5}
 --- !u!1 &41373630
 GameObject:
   m_ObjectHideFlags: 0
@@ -5095,7 +5096,7 @@ GameObject:
   - component: {fileID: 41373632}
   - component: {fileID: 41373635}
   m_Layer: 0
-  m_Name: Sphere (4)
+  m_Name: Ucheshan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5187,6 +5188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1e5e547ac11f4da413017b91250c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet:
+    name: Ucheshan
+    description: Dark Moon
 --- !u!1 &55432174
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,7 +5562,7 @@ GameObject:
   - component: {fileID: 301508848}
   - component: {fileID: 301508852}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Haciria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5650,6 +5654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1e5e547ac11f4da413017b91250c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet:
+    name: Haciria
+    description: Megafauna Jungle
 --- !u!1 &319429730
 GameObject:
   m_ObjectHideFlags: 0
@@ -5664,7 +5671,7 @@ GameObject:
   - component: {fileID: 319429732}
   - component: {fileID: 319429735}
   m_Layer: 0
-  m_Name: Sphere (2)
+  m_Name: Mauphus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5756,6 +5763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1e5e547ac11f4da413017b91250c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet:
+    name: Mauphus
+    description: Crowded Cyber Planet
 --- !u!1 &327798763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5770,7 +5780,7 @@ GameObject:
   - component: {fileID: 327798765}
   - component: {fileID: 327798768}
   m_Layer: 0
-  m_Name: Sphere (5)
+  m_Name: Ogantu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5862,6 +5872,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1e5e547ac11f4da413017b91250c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet:
+    name: Ogantu
+    description: Barren Wasteland
 --- !u!1 &345984807
 GameObject:
   m_ObjectHideFlags: 0
@@ -6104,11 +6117,11 @@ Light:
   m_GameObject: {fileID: 659837551}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 1
+  m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 26.75
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -6163,13 +6176,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659837551}
-  m_LocalRotation: {x: 0.66392624, y: 0, z: 0, w: 0.74779814}
-  m_LocalPosition: {x: 0, y: 10, z: -25}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 83.2, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &761423659
 GameObject:
   m_ObjectHideFlags: 0
@@ -11179,7 +11192,7 @@ GameObject:
   - component: {fileID: 995725263}
   - component: {fileID: 995725266}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Decceophus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11271,6 +11284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1e5e547ac11f4da413017b91250c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet:
+    name: Decceophus
+    description: Cities in the clouds
 --- !u!1 &1035766941
 GameObject:
   m_ObjectHideFlags: 0
@@ -27804,7 +27820,7 @@ GameObject:
   - component: {fileID: 1845854803}
   - component: {fileID: 1845854806}
   m_Layer: 0
-  m_Name: Sphere (3)
+  m_Name: Occara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27896,6 +27912,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0f1e5e547ac11f4da413017b91250c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet:
+    name: Occara
+    description: Endless Ocean
 --- !u!1 &1884063385
 GameObject:
   m_ObjectHideFlags: 0
@@ -28308,7 +28327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1974882128
 Transform:
   m_ObjectHideFlags: 0

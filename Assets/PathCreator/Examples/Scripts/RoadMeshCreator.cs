@@ -140,7 +140,13 @@ namespace PathCreation.Examples {
             if (mesh == null) {
                 mesh = new Mesh ();
             }
+
             meshFilter.sharedMesh = mesh;
+            if (meshHolder.GetComponent<MeshCollider>())
+            {
+                Destroy(meshHolder.GetComponent<MeshCollider>());
+                meshHolder.AddComponent<MeshCollider>();
+            }
         }
 
         void AssignMaterials () {

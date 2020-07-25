@@ -21,6 +21,11 @@ public class VertPathHelper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
         instance = this;
         path = GetComponent<PathCreator>().path;
         pathTimePrediction = (1.0f / path.length) * 2f;

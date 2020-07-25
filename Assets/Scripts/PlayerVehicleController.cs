@@ -33,7 +33,6 @@ public class PlayerVehicleController : MonoBehaviour
         vehicle.SetTurn(Input.GetAxis("Horizontal"));
         vehicle.SetThrottle(Input.GetAxis("Vertical"));
         vehicle.SetBoost(Input.GetButton("Boost"));
-        vehicle.SetDrift(Input.GetButton("Drift"));
         vehicle.SetStrafe(Input.GetAxis("Strafe"));
 
         /*

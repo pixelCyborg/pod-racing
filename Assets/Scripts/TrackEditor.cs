@@ -108,22 +108,29 @@ public class TrackEditorUI : Editor
             RaycastHit hit;
             if (Physics.Raycast(HandleUtility.GUIPointToWorldRay(Event.current.mousePosition), out hit, 99999f, trackEditor.RoadMask()))
             {
-                Quaternion targetRot = Quaternion.FromToRotation(trackEditor.transform.up, hit.normal) * trackEditor.boostPadPrefab.transform.rotation;
 
                 if (trackEditor.previewMesh != null)
                 {
-                    trackEditor.previewMesh.SetActive(true);
-                    trackEditor.previewMesh.transform.position = hit.point;
+                    if (VertPathHelper.instance == null) FindObjectOfType<VertPathHelper>().Initialize();
 
+                    Quaternion targetRot = Quaternion.FromToRotation(Vector3.up, hit.normal);// * trackEditor.boostPadPrefab.transform.rotation;
                     Vector3 pathRot = VertPathHelper.instance.GetCurrentPointRotation(trackEditor.previewMesh.transform).eulerAngles;
                     pathRot += trackEditor.rotationOffset;
+                    pathRot.x = targetRot.eulerAngles.x;
+                    pathRot.z = targetRot.eulerAngles.z;
 
+                    trackEditor.previewMesh.SetActive(true);
+                    trackEditor.previewMesh.transform.position = hit.point;
+                    trackEditor.previewMesh.transform.position += trackEditor.previewMesh.transform.up * 0.25f;
                     trackEditor.previewMesh.transform.rotation = Quaternion.Euler(pathRot);
                 }
 
                 if (e.type == EventType.MouseDown && e.button == 0)
                 {
-                    GameObject go = Instantiate(trackEditor.boostPadPrefab, hit.point, targetRot, trackEditor.boostpadRoot) as GameObject;
+                    GameObject go = Instantiate(trackEditor.boostPadPrefab, 
+                        trackEditor.previewMesh.transform.position, 
+                        trackEditor.previewMesh.transform.rotation, 
+                        trackEditor.boostpadRoot) as GameObject;
                 }
             }
             else

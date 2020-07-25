@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class OverworldPlanet : MonoBehaviour
 {
+    public Planet planet;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            DetailsUI.instance.Show();
+            DetailsUI.instance.Show(planet);
+            OverworldPlayer.instance.Stop();
             OverviewCamera.instance.Focus(transform.position);
         }
     }
@@ -20,4 +23,13 @@ public class OverworldPlanet : MonoBehaviour
             DetailsUI.instance.Hide();
         }
     }*/
+}
+
+[System.Serializable]
+public class Planet
+{
+    public string name;
+    public string description;
+    [HideInInspector]
+    public RaceData[] currentEvents;
 }

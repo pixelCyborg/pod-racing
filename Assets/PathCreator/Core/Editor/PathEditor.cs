@@ -140,6 +140,15 @@ namespace PathCreationEditor {
                                     Undo.RecordObject (creator, "Set Angle");
                                     creator.bezierPath.SetAnchorNormalAngle (anchorIndex, newAngle);
                                 }
+
+                               if(GUILayout.Button("Flatten Anchor")) {
+                                    int index = handleIndexToDisplayAsTransform;
+                                    creator.bezierPath.SetAnchorNormalAngle(index / 3, 0);
+                                    Vector3 origPoint = creator.bezierPath.GetPoint(index);
+                                    Vector3 anchorPoint = creator.bezierPath.GetPoint(index + 1);
+                                    anchorPoint.y = origPoint.y;
+                                    creator.bezierPath.MovePoint(index + 1, anchorPoint);
+                                }
                             }
                         }
                     }
@@ -509,6 +518,8 @@ namespace PathCreationEditor {
 
         void DrawHandle (int i) {
             Vector3 handlePosition = MathUtility.TransformPoint (bezierPath[i], creator.transform, bezierPath.Space);
+            int attachedControlIndexB = (i == bezierPath.NumPoints - 1) ? i - 1 : i + 1;
+            Vector3 localUp = (bezierPath[attachedControlIndexB] - handlePosition).normalized; ;
 
             float anchorHandleSize = GetHandleDiameter (globalDisplaySettings.anchorSize * data.bezierHandleScale, bezierPath[i]);
             float controlHandleSize = GetHandleDiameter (globalDisplaySettings.controlSize * data.bezierHandleScale, bezierPath[i]);
@@ -518,6 +529,13 @@ namespace PathCreationEditor {
             float handleSize = (isAnchorPoint) ? anchorHandleSize : controlHandleSize;
             bool doTransformHandle = i == handleIndexToDisplayAsTransform;
 
+            //Draw up arrow
+            if (isAnchorPoint)
+            {
+                Handles.color = Color.cyan;
+                Handles.DrawLine(handlePosition, handlePosition + localUp * data.bezierHandleScale);
+            }
+
             PathHandle.HandleColours handleColours = (isAnchorPoint) ? splineAnchorColours : splineControlColours;
             if (i == handleIndexToDisplayAsTransform) {
                 handleColours.defaultColour = (isAnchorPoint) ? globalDisplaySettings.anchorSelected : globalDisplaySettings.controlSelected;
@@ -525,6 +543,7 @@ namespace PathCreationEditor {
             var cap = capFunctions[(isAnchorPoint) ? globalDisplaySettings.anchorShape : globalDisplaySettings.controlShape];
             PathHandle.HandleInputType handleInputType;
             handlePosition = PathHandle.DrawHandle (handlePosition, bezierPath.Space, isInteractive, handleSize, cap, handleColours, out handleInputType, i);
+
 
             if (doTransformHandle) {
                 // Show normals rotate tool 

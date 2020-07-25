@@ -489,8 +489,8 @@ MonoBehaviour:
   boostCapacity: 100
   boostCost: 25
   boostRegen: 15
-  strafeSpeed: 500
-  maxStrafe: 500
+  strafeSpeed: 100
+  maxStrafe: 100
   strafeDrag: 0.1
   turnSpeed: 0.5
   maxTurn: 1.6

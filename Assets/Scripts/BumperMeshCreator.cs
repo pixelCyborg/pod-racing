@@ -178,6 +178,11 @@ namespace PathCreation.Examples
                 mesh = new Mesh();
             }
             meshFilter.sharedMesh = mesh;
+            if (meshHolder.GetComponent<MeshCollider>())
+            {
+                Destroy(meshHolder.GetComponent<MeshCollider>());
+                meshHolder.AddComponent<MeshCollider>();
+            }
         }
 
         void AssignMaterials(ref GameObject meshHolder, ref MeshFilter meshFilter, ref MeshRenderer meshRenderer, ref Mesh mesh)

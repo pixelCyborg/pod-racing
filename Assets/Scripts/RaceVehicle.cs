@@ -38,7 +38,6 @@ public class RaceVehicle : MonoBehaviour
 
     [Header("Strafe")]
     public float strafeSpeed = 0.4f;
-    public float maxStrafe = 4f;
     [Range(0.0f, 1.0f)]
     public float strafeDrag = 0.85f;
 
@@ -73,7 +72,6 @@ public class RaceVehicle : MonoBehaviour
     float throttle;
     float strafe;
     bool boosting;
-    bool drifting;
 
     //Current physics stuff
     bool customPhysicsEnabled = true;
@@ -137,25 +135,6 @@ public class RaceVehicle : MonoBehaviour
         }
         boosting = _boost;
         UpdateParticleAnims("boosting", _boost);
-    }
-
-    public void SetDrift(bool _drift)
-    {
-        drifting = _drift;
-    }
-
-    public void LStrafe()
-    {
-        if (drifting) return;
-        strafeSource?.Play();
-        velocity_strafe = -maxStrafe;
-    }
-
-    public void RStrafe()
-    {
-        if (drifting) return;
-        strafeSource?.Play();
-        velocity_strafe = maxStrafe;
     }
 
     private void Awake()
@@ -238,17 +217,6 @@ public class RaceVehicle : MonoBehaviour
             if (isPlayer) SpeedLinesOverlay.Off();
         }
 
-        if (drifting)
-        {
-            if(driftDirection == Vector3.zero) driftDirection = transform.forward;
-            throttle = 0f;
-            drifting = true;
-        }
-        else if (driftDirection != Vector3.zero)
-        {
-            driftDirection = Vector3.zero;
-        }
-
         anim.SetFloat("Strafe", velocity_turn);
 
         if (followedCamera)
@@ -287,10 +255,10 @@ public class RaceVehicle : MonoBehaviour
 
         if (customPhysicsEnabled)
         {
+            PreCheckCollision();
             UpdatePosition();
         }
         UpdateVelocities();
-        PreCheckCollision();
     }
 
     void MagnetizeToGround()
@@ -359,12 +327,13 @@ public class RaceVehicle : MonoBehaviour
     IEnumerator TransferVelocity()
     {
         yield return null;
-        body.AddForce(((drifting ? driftDirection : transform.forward) * velocity_throttle + inertia) * 10, ForceMode.VelocityChange);
+        body.AddForce((transform.forward * velocity_throttle + inertia) * 10, ForceMode.VelocityChange);
     }
 
     void UpdatePosition()
     {
         Vector3 velocity = GetVelocity();
+        transform.position += velocity;
         currentVel = velocity;
 
         //Rotation
@@ -374,10 +343,9 @@ public class RaceVehicle : MonoBehaviour
 
     Vector3 GetVelocity()
     {
-        Vector3 velocity = drifting? driftDirection *velocity_throttle : transform.forward* velocity_throttle;
+        Vector3 velocity = transform.forward * velocity_throttle;
         velocity += transform.right * velocity_strafe;
         velocity += inertia;
-        transform.position += velocity;
         return velocity;
     }
 
@@ -385,7 +353,7 @@ public class RaceVehicle : MonoBehaviour
     {
 
         velocity_strafe *= strafeDrag;
-        if(!drifting) velocity_throttle *= velocityDrag;
+        velocity_throttle *= velocityDrag;
         velocity_turn *= turnDrag;
 
         if (Mathf.Abs(velocity_strafe) < 0.01f) velocity_strafe = 0f;
@@ -475,26 +443,39 @@ public class RaceVehicle : MonoBehaviour
         Collide(avgContactPoint, collision.transform.tag == "Wall");
     }
 
-    private void PreCheckCollision()
+    private bool PreCheckCollision()
     {
         RaycastHit hit;
-        bool collisionImminent = Physics.SphereCast(transform.position, 1.0f, currentVel.normalized, out hit, currentVel.magnitude, everythingButRoads, QueryTriggerInteraction.Ignore);
+        Vector3 direction = currentVel;
+
+        bool collisionImminent = Physics.SphereCast(transform.position, 1.0f, direction.normalized, out hit, direction.magnitude, everythingButRoads, QueryTriggerInteraction.Ignore);
         if(collisionImminent)
         {
             Collide(hit.normal, hit.transform.tag == "Wall");
+            return true;
         }
+        return false;
     }
 
     private void Collide(Vector3 collisionNormal, bool solid = false)
     {
-        inertia = collisionNormal;
-        float forceMultiplier = velocity_throttle * (solid ? 1.5f : 0.2f);
+        inertia = Vector3.zero;
+        Vector3 direction = GetVelocity();
+
+        float forceMultiplier = direction.magnitude * (solid ? 1.8f : 0.33f);
         if (forceMultiplier < 2) forceMultiplier = 2;
 
-        float impactForce = Mathf.Abs(Vector3.Angle(transform.forward, collisionNormal) / 180);
+        float impactForce = Mathf.Abs(Vector3.Angle(direction.normalized, collisionNormal) / 180);
         impactForce = MathHelpers.ConvertRange(0.5f, 1.0f, 0.1f, 1.0f, impactForce);
 
+        inertia = collisionNormal;
         inertia *= impactForce * forceMultiplier;
+
+        if (solid)
+        {
+            velocity_strafe = -velocity_strafe;
+            velocity_throttle *= 0.8f;
+        }
 
         Vector3 down = -transform.up;
         float dot = Vector3.Dot(inertia, down);
@@ -534,7 +515,7 @@ public class RaceVehicle : MonoBehaviour
 
     public Vector3 CurrentVelocity()
     {
-        return drifting ? driftDirection * velocity_throttle : transform.forward * velocity_throttle;
+        return transform.forward * velocity_throttle;
     }
 
     public void UpdatePathPosition(float pathPosition)

@@ -25,13 +25,16 @@ public class DetailsUI : MonoBehaviour
         Overworld.instance.Move += Hide;
     }
 
-    public void Show()
+    public void Show(Planet planet)
     {
-        Show(new RaceData("Default", 1, 2000));
+        Show(new RaceData("Default", 1, 2000), planet);
     }
 
-    public void Show(RaceData race)
+    public void Show(RaceData race, Planet planetData)
     {
+        planet.text = planetData.name;
+        planetDescription.text = planetData.description;
+
         raceData = race;
 
         courseName.text = race.courseName;
