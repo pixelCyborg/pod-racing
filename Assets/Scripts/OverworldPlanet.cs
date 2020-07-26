@@ -12,7 +12,7 @@ public class OverworldPlanet : MonoBehaviour
         {
             DetailsUI.instance.Show(planet);
             OverworldPlayer.instance.Stop();
-            OverviewCamera.instance.Focus(transform.position);
+            OverviewCamera.instance.Focus(transform.position, GetComponent<SphereCollider>());
         }
     }
 

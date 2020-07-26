@@ -19,23 +19,26 @@ public class OverviewCamera : MonoBehaviour
         instance = this;
     }
 
-    void FitScreen(BoxCollider fitObject, float fitMultiplier = 1.0f)
+    void FitScreen(SphereCollider fitObject, float fitMultiplier = 2.0f)
     {
-        Vector3 xyz = fitObject.size;
-        float distance = Mathf.Max(xyz.x, xyz.y, xyz.z);
-        distance /= (2.0f * Mathf.Tan(0.5f * Camera.main.fieldOfView * Mathf.Deg2Rad));
+        float radius = fitObject.radius;
+        //float distance = Mathf.Max(xyz.x, xyz.y, xyz.z);
+        radius /= (2.0f * Mathf.Tan(0.5f * Camera.main.fieldOfView * Mathf.Deg2Rad));
         // Move camera in -z-direction; change '2.0f' to your needs
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -distance * fitMultiplier);
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, -radius * fitMultiplier);
         fitObject.gameObject.SetActive(false);
     }
 
-    public void Focus(Vector3 position)
+    public void Focus(Vector3 position, SphereCollider focus)
     {
         Vector3 target = position + planetOffset;
 
         Vector3 lookRotation = Quaternion.LookRotation(position - target).eulerAngles;
 
-        transform.DOMove(target, transitionTime);
+        transform.DOMove(target, transitionTime).OnComplete(() =>
+        {
+            FitScreen(focus);
+        });
         transform.DORotate(lookRotation, transitionTime);
     }
 
