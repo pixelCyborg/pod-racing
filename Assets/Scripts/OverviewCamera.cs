@@ -9,13 +9,17 @@ public class OverviewCamera : MonoBehaviour
     public Vector3 planetOffset;
     private Vector3 origPos;
     private Vector3 origRot;
+    private float origZPos;
+    private Transform anchor;
     public static OverviewCamera instance;
 
 
     private void Start()
     {
-        origPos = transform.position;
-        origRot = transform.rotation.eulerAngles;
+        anchor = transform.parent;
+        origPos = anchor.position;
+        origRot = anchor.rotation.eulerAngles;
+        origZPos = transform.localPosition.z;
         instance = this;
     }
 
@@ -29,22 +33,20 @@ public class OverviewCamera : MonoBehaviour
         fitObject.gameObject.SetActive(false);
     }
 
-    public void Focus(Vector3 position, SphereCollider focus)
+    public void Focus(Vector3 position, SphereCollider collider)
     {
-        Vector3 target = position + planetOffset;
-
+        Vector3 target = position;
         Vector3 lookRotation = Quaternion.LookRotation(position - target).eulerAngles;
 
-        transform.DOMove(target, transitionTime).OnComplete(() =>
-        {
-            FitScreen(focus);
-        });
-        transform.DORotate(lookRotation, transitionTime);
+        anchor.DOMove(target, transitionTime);
+        //anchor.DORotate(lookRotation, transitionTime);
+        transform.DOLocalMoveZ(collider.radius * collider.transform.localScale.x * -2f, transitionTime);
     }
 
     public void UnFocus()
     {
-        transform.DOMove(origPos, transitionTime);
-        transform.DORotate(origRot, transitionTime);
+        anchor.DOMove(origPos, transitionTime);
+        //anchor.DORotate(origRot, transitionTime);
+        transform.DOLocalMoveZ(origZPos, transitionTime);
     }
 }
