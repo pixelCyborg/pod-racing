@@ -119,6 +119,14 @@ public class Garage : MonoBehaviour
         return parts.ToArray();
     }
 
+    public void AddPart(PartsDB.Part part)
+    {
+        List<PartsDB.Part> partsList = new List<PartsDB.Part>(ownedParts);
+        partsList.Add(part);
+        ownedParts = partsList.ToArray();
+        SaveVehicleData();
+    }
+
     //Data setting
 
     public void SetChassis(Chassis chassis)

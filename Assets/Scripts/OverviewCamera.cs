@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using DG.Tweening;
 
 public class OverviewCamera : MonoBehaviour
@@ -12,6 +13,10 @@ public class OverviewCamera : MonoBehaviour
     private float origZPos;
     private Transform anchor;
     public static OverviewCamera instance;
+    public bool zoomed;
+    public Vector2 sensitivity = Vector2.one;
+    Vector3 camSpeed;
+    public UnityEvent onUnfocus;
 
 
     private void Start()
@@ -21,6 +26,24 @@ public class OverviewCamera : MonoBehaviour
         origRot = anchor.rotation.eulerAngles;
         origZPos = transform.localPosition.z;
         instance = this;
+    }
+
+    void Update()
+    {
+        if(!zoomed) return;
+        if (Input.GetMouseButton(0))
+        {
+            float x = Input.GetAxis("Mouse X") * sensitivity.x;
+            float y = Input.GetAxis("Mouse Y") * sensitivity.y;
+            camSpeed = new Vector3(-y, x);
+        }
+        anchor.transform.Rotate(camSpeed);
+        camSpeed = Vector3.Lerp(camSpeed, Vector3.zero, Time.deltaTime * 8f);
+    }
+
+    public void ShiftPlanet(bool enabled, float amount = 1.0f)
+    {
+        transform.DOLocalMoveX(enabled ? amount : 0.0f, transitionTime);
     }
 
     void FitScreen(SphereCollider fitObject, float fitMultiplier = 2.0f)
@@ -40,13 +63,21 @@ public class OverviewCamera : MonoBehaviour
 
         anchor.DOMove(target, transitionTime);
         //anchor.DORotate(lookRotation, transitionTime);
-        transform.DOLocalMoveZ(collider.radius * collider.transform.localScale.x * -2f, transitionTime);
+        transform.DOLocalMoveZ(collider.radius * collider.transform.localScale.x * -2f, transitionTime).OnComplete(() =>
+        {
+            zoomed = true;
+        });
     }
 
     public void UnFocus()
     {
+        anchor.DOKill();
+        transform.DOKill();
+        zoomed = false;
+        OverviewCamera.instance.ShiftPlanet(false);
         anchor.DOMove(origPos, transitionTime);
-        //anchor.DORotate(origRot, transitionTime);
+        anchor.DORotate(origRot, transitionTime);
         transform.DOLocalMoveZ(origZPos, transitionTime);
+        onUnfocus.Invoke();
     }
 }

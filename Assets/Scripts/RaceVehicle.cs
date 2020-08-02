@@ -580,7 +580,7 @@ public class RaceVehicle : MonoBehaviour
     public int GetCurrentLap()
     {
         if (lap < 1) return 1;
-        if (lap > RaceManager.raceData.laps) return lap;
+        if (lap > RaceManager.raceData?.laps) return lap;
         return lap;
     }
 

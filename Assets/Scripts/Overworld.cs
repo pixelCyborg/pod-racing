@@ -10,6 +10,7 @@ public class Overworld : MonoBehaviour
     public Vector3 target;
     public UnityAction<Vector3> Move;
     LayerMask mask;
+    public GameObject locationPrefab;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,6 +21,7 @@ public class Overworld : MonoBehaviour
 
     private void Update()
     {
+        if (OverviewCamera.instance.zoomed) return;
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             RaycastHit hit;

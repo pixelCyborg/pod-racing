@@ -5,15 +5,81 @@ using UnityEngine;
 public class OverworldPlanet : MonoBehaviour
 {
     public Planet planet;
+    private int raceCount = 3;
+    private float planetRadius = 0.5f;
+    private List<GameObject> locations;
+
+    private void Start()
+    {
+        Populate();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            DetailsUI.instance.Show(planet);
+            DetailsUI.instance.ShowPlanet(planet);
             OverworldPlayer.instance.Stop();
             OverviewCamera.instance.Focus(transform.position, GetComponent<SphereCollider>());
+            OverviewCamera.instance.onUnfocus.AddListener(HideLocations);
+            ShowLocations();
         }
+    }
+
+    private void Populate()
+    {
+        locations = new List<GameObject>();
+        bool merchantAdded = false;
+
+        for(int i = 0; i < raceCount; i++)
+        {
+            Location newLocation = Instantiate(Overworld.instance.locationPrefab, transform).GetComponent<Location>();
+            Vector3 pos = transform.position + Vector3.up * planetRadius * transform.localScale.z;
+
+            float x, y, z;
+            x = Random.Range(-360f, 360f);
+            y = Random.Range(-360f, 360f);
+            z = Random.Range(-360f, 360f);
+            pos = RotatePointAroundPivot(pos, transform.position, new Vector3(x, y, z));
+            newLocation.transform.position = pos;
+            newLocation.transform.rotation = Quaternion.LookRotation(transform.position - pos);
+
+            //Set the location info
+            if(!merchantAdded)
+            {
+                newLocation.Initialize(Location.LocationType.Merchant);
+                merchantAdded = true;
+            }
+            else
+            {
+                newLocation.Initialize(Location.LocationType.Race);
+            }
+
+            locations.Add(newLocation.gameObject);
+        }
+        HideLocations();
+    }
+
+    public void HideLocations()
+    {
+        OverviewCamera.instance.onUnfocus.RemoveListener(HideLocations);
+        for(int i = 0; i < locations.Count; i++)
+        {
+            locations[i].SetActive(false);
+        }
+    }
+
+    public void ShowLocations()
+    {
+        for (int i = 0; i < locations.Count; i++)
+        {
+            locations[i].SetActive(true);
+        }
+    }
+
+    public Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles)
+    {
+        return Quaternion.Euler(angles) * (point - pivot) + pivot;
     }
 
     /*private void OnTriggerExit(Collider other)
@@ -31,5 +97,5 @@ public class Planet
     public string name;
     public string description;
     [HideInInspector]
-    public RaceData[] currentEvents;
+    public Location[] currentEvents;
 }
