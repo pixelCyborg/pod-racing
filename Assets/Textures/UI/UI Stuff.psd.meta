@@ -1,0 +1,787 @@
+fileFormatVersion: 2
+guid: 4375047ee96b0ab4cb5387716af0a074
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5290812449419550263
+    second: Panel A
+  - first:
+      213: -5340476692051504204
+    second: Panel B
+  - first:
+      213: -7915828230698987323
+    second: Reticle
+  - first:
+      213: 5358072191189364159
+    second: Empty Gauge
+  - first:
+      213: -55954202183183470
+    second: UI Stuff_4
+  - first:
+      213: 6378762703583570412
+    second: Box Panel
+  - first:
+      213: -3328842331355447295
+    second: Full Gauge
+  - first:
+      213: -4039761308599584264
+    second: UI Stuff_7
+  - first:
+      213: -173936166297152887
+    second: UI Stuff_8
+  - first:
+      213: -8632855663889563784
+    second: UI Stuff_9
+  - first:
+      213: -9005716444843862164
+    second: UI Stuff_10
+  - first:
+      213: 1353231636033969136
+    second: UI Stuff_11
+  - first:
+      213: 5801233505658354266
+    second: UI Stuff_12
+  - first:
+      213: 5733939606069043282
+    second: UI Stuff_13
+  - first:
+      213: 8370209796902936740
+    second: UI Stuff_14
+  - first:
+      213: -985814324586777868
+    second: UI Stuff_15
+  - first:
+      213: 1430463720443021457
+    second: UI Stuff_16
+  - first:
+      213: 9194705059037116332
+    second: UI Stuff_17
+  - first:
+      213: 4236936732285754819
+    second: UI Stuff_18
+  - first:
+      213: 5341316962876797240
+    second: UI Stuff_19
+  - first:
+      213: -3457001000154315276
+    second: UI Stuff_20
+  - first:
+      213: -1060185564873395037
+    second: UI Stuff_21
+  - first:
+      213: 8061192442933219257
+    second: UI Stuff_22
+  - first:
+      213: 5364793939667792736
+    second: UI Stuff_23
+  - first:
+      213: -7768419852315514714
+    second: UI Stuff_24
+  - first:
+      213: -1340011860220559986
+    second: UI Stuff_25
+  - first:
+      213: -5948304465146781634
+    second: UI Stuff_26
+  - first:
+      213: 7927501763080005581
+    second: UI Stuff_27
+  - first:
+      213: 5297358521090074554
+    second: UI Stuff_28
+  - first:
+      213: 8226570158397857638
+    second: UI Stuff_29
+  - first:
+      213: 1111955943939765778
+    second: UI Stuff_30
+  - first:
+      213: 6958256787367554510
+    second: UI Stuff_31
+  - first:
+      213: -7644424092478846486
+    second: UI Stuff_32
+  - first:
+      213: -9013251708693073537
+    second: UI Stuff_33
+  - first:
+      213: 8637750294429474438
+    second: UI Stuff_34
+  - first:
+      213: 5489580231255290765
+    second: UI Stuff_35
+  - first:
+      213: 1295195114990126871
+    second: UI Stuff_36
+  - first:
+      213: 5968573162931658101
+    second: UI Stuff_37
+  - first:
+      213: 1623155624076885681
+    second: UI Stuff_38
+  - first:
+      213: 7681244296233009401
+    second: UI Stuff_39
+  - first:
+      213: -1634269359585400946
+    second: UI Stuff_40
+  - first:
+      213: -1252616275725399814
+    second: Button
+  - first:
+      213: 8309494099581964409
+    second: UI Stuff_42
+  - first:
+      213: -580420681597564008
+    second: UI Stuff_43
+  - first:
+      213: -8931133913529504249
+    second: Currency Icon
+  - first:
+      213: -6503144946391753547
+    second: UI Stuff_45
+  - first:
+      213: -3809084944416769787
+    second: UI Stuff_46
+  - first:
+      213: 5969835501958522974
+    second: UI Stuff_47
+  - first:
+      213: 7567868227240862949
+    second: UI Stuff_48
+  - first:
+      213: -4341387442313730550
+    second: UI Stuff_49
+  - first:
+      213: -5630527633682051283
+    second: UI Stuff_50
+  - first:
+      213: -3288677639210247091
+    second: UI Stuff_51
+  - first:
+      213: 7714035417756866562
+    second: UI Stuff_52
+  - first:
+      213: -4878499088527779697
+    second: UI Stuff_53
+  - first:
+      213: -4182904380602857516
+    second: UI Stuff_54
+  - first:
+      213: -5103538597927838686
+    second: UI Stuff_55
+  - first:
+      213: 5875774576254930786
+    second: UI Stuff_56
+  - first:
+      213: 6846261523389018880
+    second: UI Stuff_57
+  - first:
+      213: -1170784564282300137
+    second: UI Stuff_58
+  - first:
+      213: -2212809519946941708
+    second: UI Stuff_59
+  - first:
+      213: -3572074659598001860
+    second: UI Stuff_60
+  - first:
+      213: 1324413938705506679
+    second: UI Stuff_61
+  - first:
+      213: -1718701249963349295
+    second: UI Stuff_62
+  - first:
+      213: -4614624891450610502
+    second: UI Stuff_63
+  - first:
+      213: 6954100722779283162
+    second: UI Stuff_64
+  - first:
+      213: -8972317468706211661
+    second: UI Stuff_65
+  - first:
+      213: 395390952064704888
+    second: UI Stuff_66
+  - first:
+      213: -5965789970173175797
+    second: UI Stuff_67
+  - first:
+      213: 4143562289691997827
+    second: UI Stuff_68
+  - first:
+      213: -5157872678096498723
+    second: UI Stuff_69
+  - first:
+      213: 3737282720364133966
+    second: UI Stuff_70
+  - first:
+      213: -9035731963905222060
+    second: UI Stuff_71
+  - first:
+      213: -5910401337860336917
+    second: UI Stuff_72
+  - first:
+      213: -30680538627612973
+    second: UI Stuff_73
+  - first:
+      213: -6986447615928318723
+    second: UI Stuff_74
+  - first:
+      213: -404460277099407902
+    second: UI Stuff_75
+  - first:
+      213: 940959275652168177
+    second: UI Stuff_76
+  - first:
+      213: 8683437972649383581
+    second: UI Stuff_77
+  - first:
+      213: 2203378565090023643
+    second: UI Stuff_78
+  - first:
+      213: -1394987481243853852
+    second: UI Stuff_79
+  - first:
+      213: 6618552358377623241
+    second: UI Stuff_80
+  - first:
+      213: -7547156900848335223
+    second: UI Stuff_81
+  - first:
+      213: 787198479802426846
+    second: UI Stuff_82
+  - first:
+      213: -1321409328278746900
+    second: UI Stuff_83
+  - first:
+      213: -2578435335400166188
+    second: UI Stuff_28
+  - first:
+      213: -9126388428558832721
+    second: Full Gauge
+  - first:
+      213: -3525586400836691352
+    second: UI Stuff_7
+  - first:
+      213: 8879892132357335153
+    second: UI Stuff_8
+  - first:
+      213: 168743105258286436
+    second: UI Stuff_9
+  - first:
+      213: -982232834595813975
+    second: UI Stuff_10
+  - first:
+      213: 86892006548795776
+    second: UI Stuff_11
+  - first:
+      213: -5168570103647933628
+    second: UI Stuff_13
+  - first:
+      213: 5185587527062251574
+    second: UI Stuff_15
+  - first:
+      213: -7188251273542647913
+    second: UI Stuff_16
+  - first:
+      213: -2363639431638179114
+    second: UI Stuff_17
+  - first:
+      213: -7060086930704654757
+    second: UI Stuff_18
+  - first:
+      213: 121535971349326814
+    second: UI Stuff_19
+  - first:
+      213: -7312416022863053122
+    second: UI Stuff_20
+  - first:
+      213: 3435264449624054217
+    second: UI Stuff_21
+  - first:
+      213: 322384773312133115
+    second: UI Stuff_22
+  - first:
+      213: -1622651851698268465
+    second: UI Stuff_23
+  - first:
+      213: -8692102917449737580
+    second: UI Stuff_24
+  - first:
+      213: -5465392331256141779
+    second: UI Stuff_25
+  - first:
+      213: 7546981793148095717
+    second: UI Stuff_26
+  - first:
+      213: -8066721598121413751
+    second: UI Stuff_27
+  - first:
+      213: 8232342194414982700
+    second: UI Stuff_29
+  - first:
+      213: -8220393211694306976
+    second: UI Stuff_30
+  - first:
+      213: -1651306317954197156
+    second: UI Stuff_31
+  - first:
+      213: 2402472350761110680
+    second: UI Stuff_32
+  - first:
+      213: -8660391654640581254
+    second: UI Stuff_33
+  - first:
+      213: -4332867950614641723
+    second: UI Stuff_34
+  - first:
+      213: 2456731746587169015
+    second: UI Stuff_35
+  - first:
+      213: 9018530883971537476
+    second: UI Stuff_36
+  - first:
+      213: -3525321637441088015
+    second: Panel A
+  - first:
+      213: 6454158094152342167
+    second: Panel B
+  - first:
+      213: 5442701800206942982
+    second: Reticle
+  - first:
+      213: -7816895433642883665
+    second: Empty Gauge
+  - first:
+      213: 7015291141943279803
+    second: UI Stuff_4
+  - first:
+      213: -816425343402351475
+    second: Box Panel
+  - first:
+      213: 2596282544899506133
+    second: UI Stuff_12
+  - first:
+      213: 862371983003879712
+    second: UI Stuff_14
+  - first:
+      213: 7275123653990119228
+    second: UI Stuff_37
+  - first:
+      213: 6108445485548649207
+    second: UI Stuff_38
+  - first:
+      213: -6605577965084209302
+    second: UI Stuff_39
+  - first:
+      213: 2454154436863812600
+    second: UI Stuff_40
+  - first:
+      213: -6597806466438064424
+    second: Button
+  - first:
+      213: 5445908358825806478
+    second: UI Stuff_42
+  - first:
+      213: 3037262317080366075
+    second: UI Stuff_43
+  - first:
+      213: -6276053414489710680
+    second: Currency Icon
+  - first:
+      213: 4855086144582930031
+    second: UI Stuff_45
+  - first:
+      213: -1295475668829516542
+    second: UI Stuff_46
+  - first:
+      213: 7858622372563772098
+    second: UI Stuff_47
+  - first:
+      213: 8748790408953355327
+    second: UI Stuff_48
+  - first:
+      213: 1059858612904638154
+    second: UI Stuff_49
+  - first:
+      213: -6389986437552087302
+    second: UI Stuff_50
+  - first:
+      213: -4225618117177044287
+    second: UI Stuff_51
+  - first:
+      213: -2815971449336163478
+    second: UI Stuff_52
+  - first:
+      213: -3479308694848578030
+    second: UI Stuff_53
+  - first:
+      213: 5318294346837454005
+    second: UI Stuff_54
+  - first:
+      213: -307723797321711461
+    second: UI Stuff_55
+  - first:
+      213: 2286386917499991120
+    second: UI Stuff_56
+  - first:
+      213: -2087356815550347253
+    second: UI Stuff_57
+  - first:
+      213: -5921995701125103438
+    second: UI Stuff_58
+  - first:
+      213: -1785010450380771508
+    second: UI Stuff_59
+  - first:
+      213: 2889688375678252059
+    second: UI Stuff_60
+  - first:
+      213: 5870792530033314798
+    second: UI Stuff_61
+  - first:
+      213: 537960633172355900
+    second: UI Stuff_62
+  - first:
+      213: -7102807581675050545
+    second: UI Stuff_63
+  - first:
+      213: -607599558448107154
+    second: UI Stuff_64
+  - first:
+      213: 1890964450379841561
+    second: UI Stuff_65
+  - first:
+      213: -808386083228984603
+    second: UI Stuff_66
+  - first:
+      213: 3778029352191097182
+    second: UI Stuff_67
+  - first:
+      213: -2320009182911753922
+    second: UI Stuff_68
+  - first:
+      213: -2497402693432831761
+    second: UI Stuff_69
+  - first:
+      213: -3165273981976089553
+    second: UI Stuff_70
+  - first:
+      213: 7160308347125488616
+    second: UI Stuff_71
+  - first:
+      213: -3058566425487583457
+    second: UI Stuff_72
+  - first:
+      213: -1670317853326350959
+    second: UI Stuff_73
+  - first:
+      213: 757210924292087460
+    second: UI Stuff_74
+  - first:
+      213: -642522839555626387
+    second: UI Stuff_75
+  - first:
+      213: -5654063224868669088
+    second: UI Stuff_76
+  - first:
+      213: 8043832886706731893
+    second: UI Stuff_77
+  - first:
+      213: -6199497751988387355
+    second: UI Stuff_78
+  - first:
+      213: -7807212025038881824
+    second: UI Stuff_79
+  - first:
+      213: 3014677891826208732
+    second: UI Stuff_80
+  - first:
+      213: -2951958600100998446
+    second: UI Stuff_81
+  - first:
+      213: -5704033007320986291
+    second: UI Stuff_82
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Panel A
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 246
+        width: 752
+        height: 388
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 110, y: 130, z: 110, w: 116}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73edddc04edbc6940800000000000000
+      internalID: 5290812449419550263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Panel B
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 235
+        width: 715
+        height: 411
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 100, y: 70, z: 100, w: 70}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b3540f5eb0d2e5b0800000000000000
+      internalID: -5340476692051504204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reticle
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 16
+        width: 194
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c09d2ef924552290800000000000000
+      internalID: -7915828230698987323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Box Panel
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 33
+        width: 159
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 32, y: 50, z: 32, w: 50}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce9eb9df1eae58850800000000000000
+      internalID: 6378762703583570412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 46
+        width: 221
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 70, y: 13, z: 70, w: 17}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af8c3854220dd9ee0800000000000000
+      internalID: -1252616275725399814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Currency Icon
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 45
+        width: 106
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70e21aa560d3e0480800000000000000
+      internalID: -8931133913529504249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full Gauge
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 51
+        width: 741
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fabe381f31e885180800000000000000
+      internalID: -9126388428558832721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Empty Gauge
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 123
+        width: 741
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa5c75fc40fc48390800000000000000
+      internalID: -7816895433642883665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a0ca93f81916c224aa2c37bf8bbc7e2d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

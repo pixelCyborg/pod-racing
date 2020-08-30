@@ -333,6 +333,19 @@ public class RaceVehicle : MonoBehaviour
     void UpdatePosition()
     {
         Vector3 velocity = GetVelocity();
+
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, velocity, out hit, velocity.magnitude, roadLayer))
+        {
+            Vector3 hitPoint = hit.point + (hit.normal * hoverDistance);
+            velocity = hitPoint - transform.position;
+            velocity *= 0.9f;
+            if(roadLayer == (roadLayer | (1 << hit.transform.gameObject.layer)))
+            {
+                transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            }
+        }
+
         transform.position += velocity;
         currentVel = velocity;
 
@@ -635,6 +648,7 @@ public class RaceVehicle : MonoBehaviour
         ClearMesh();
 
         GameObject go = Instantiate(chassis.gameObject);
+        go.layer = gameObject.layer;
         go.transform.SetParent(meshParent);
         go.transform.localPosition = Vector3.zero;
         go.transform.localRotation = Quaternion.identity;

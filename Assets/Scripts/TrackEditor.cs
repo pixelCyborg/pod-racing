@@ -10,7 +10,6 @@ using UnityEditor;
 public class TrackEditor : MonoBehaviour
 {
     public GameObject previewMesh;
-    public Vector3 rotationOffset = Vector3.zero;
 
     public GameObject boostPadPrefab;
     [HideInInspector]
@@ -115,9 +114,6 @@ public class TrackEditorUI : Editor
 
                     Quaternion targetRot = Quaternion.FromToRotation(Vector3.up, hit.normal);// * trackEditor.boostPadPrefab.transform.rotation;
                     Vector3 pathRot = VertPathHelper.instance.GetCurrentPointRotation(trackEditor.previewMesh.transform).eulerAngles;
-                    pathRot += trackEditor.rotationOffset;
-                    pathRot.x = targetRot.eulerAngles.x;
-                    pathRot.z = targetRot.eulerAngles.z;
 
                     trackEditor.previewMesh.SetActive(true);
                     trackEditor.previewMesh.transform.position = hit.point;

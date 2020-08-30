@@ -35,10 +35,12 @@ namespace PathCreation.Examples
                 AssignMeshComponents(ref meshHolder_R, ref meshFilter_R, ref meshRenderer_R, ref mesh_R, true);
                 AssignMaterials(ref meshHolder_R, ref meshFilter_R, ref meshRenderer_R, ref mesh_R);
                 CreateBumperPesh(ref meshHolder_R, ref meshFilter_R, ref meshRenderer_R, ref mesh_R, true);
+                UpdateMeshCollider(ref meshHolder_R, ref mesh_R);
 
                 AssignMeshComponents(ref meshHolder_L, ref meshFilter_L, ref meshRenderer_L, ref mesh_L, false);
                 AssignMaterials(ref meshHolder_L, ref meshFilter_L, ref meshRenderer_L, ref mesh_L);
                 CreateBumperPesh(ref meshHolder_L, ref meshFilter_L, ref meshRenderer_L, ref mesh_L, false);
+                UpdateMeshCollider(ref meshHolder_L, ref mesh_L);
             }
         }
 
@@ -153,8 +155,10 @@ namespace PathCreation.Examples
             if (meshHolder == null)
             {
                 string objectName = "Bumper Mesh Holder" + (isRight ? "_R" : "_L");
-                meshHolder = new GameObject(objectName);
-                meshHolder.tag = "Wall";
+                GameObject go = GameObject.Find(objectName);
+
+                if (go != null) meshHolder = go;
+                else meshHolder = new GameObject(objectName);
             }
 
             meshHolder.transform.rotation = Quaternion.identity;
@@ -178,11 +182,16 @@ namespace PathCreation.Examples
                 mesh = new Mesh();
             }
             meshFilter.sharedMesh = mesh;
-            if (meshHolder.GetComponent<MeshCollider>())
+        }
+
+        void UpdateMeshCollider(ref GameObject meshHolder, ref Mesh mesh)
+        {
+            MeshCollider meshCol = meshHolder.GetComponent<MeshCollider>();
+            if (!meshCol)
             {
-                Destroy(meshHolder.GetComponent<MeshCollider>());
-                meshHolder.AddComponent<MeshCollider>();
+                meshCol = meshHolder.AddComponent<MeshCollider>();
             }
+            meshCol.sharedMesh = mesh;
         }
 
         void AssignMaterials(ref GameObject meshHolder, ref MeshFilter meshFilter, ref MeshRenderer meshRenderer, ref Mesh mesh)

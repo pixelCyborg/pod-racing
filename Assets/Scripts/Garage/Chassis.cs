@@ -72,6 +72,11 @@ public class Chassis : CarComponent
         newObject.localPosition = Vector3.zero;
         newObject.localRotation = Quaternion.identity;
         newObject.localScale = Vector3.one;
+        newObject.gameObject.layer = gameObject.layer;
+        for (int i = 0; i < newObject.childCount; i++) {
+            GameObject child = newObject.GetChild(i).gameObject;
+            child.layer = gameObject.layer;
+        }
     }
 
     public void ClearChildren(Transform parent)

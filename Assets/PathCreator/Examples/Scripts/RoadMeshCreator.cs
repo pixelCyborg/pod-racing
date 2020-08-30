@@ -6,6 +6,7 @@ namespace PathCreation.Examples {
     public class RoadMeshCreator : PathSceneTool {
         [Header ("Road settings")]
         public float roadWidth = .4f;
+        [Range (0, .5f)]
         public float thickness = .15f;
         public bool flattenSurface;
 
@@ -26,6 +27,7 @@ namespace PathCreation.Examples {
                 AssignMeshComponents ();
                 AssignMaterials ();
                 CreateRoadMesh ();
+                UpdateMeshCollider();
             }
         }
 
@@ -116,6 +118,16 @@ namespace PathCreation.Examples {
             mesh.RecalculateBounds ();
         }
 
+        void UpdateMeshCollider()
+        {
+            MeshCollider meshCol = meshHolder.GetComponent<MeshCollider>();
+            if (!meshCol)
+            {
+                meshCol = meshHolder.AddComponent<MeshCollider>();
+            }
+            meshCol.sharedMesh = mesh;
+        }
+
         // Add MeshRenderer and MeshFilter components to this gameobject if not already attached
         void AssignMeshComponents () {
 
@@ -140,13 +152,7 @@ namespace PathCreation.Examples {
             if (mesh == null) {
                 mesh = new Mesh ();
             }
-
             meshFilter.sharedMesh = mesh;
-            if (meshHolder.GetComponent<MeshCollider>())
-            {
-                Destroy(meshHolder.GetComponent<MeshCollider>());
-                meshHolder.AddComponent<MeshCollider>();
-            }
         }
 
         void AssignMaterials () {

@@ -70,7 +70,7 @@ public class MerchantWindow : MonoBehaviour
 
     public void BuyPart(PartsDB.Part part)
     {
-        Garage.instance.AddPart(part);
+        Garage.AddPart(part);
         componentInventory.Remove(part);
         PopulateMerchant(componentInventory.ToArray());
     }

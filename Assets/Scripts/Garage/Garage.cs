@@ -119,11 +119,12 @@ public class Garage : MonoBehaviour
         return parts.ToArray();
     }
 
-    public void AddPart(PartsDB.Part part)
+    public static void AddPart(PartsDB.Part part)
     {
-        List<PartsDB.Part> partsList = new List<PartsDB.Part>(ownedParts);
+        List<PartsDB.Part> partsList = new List<PartsDB.Part>(OwnedParts);
         partsList.Add(part);
-        ownedParts = partsList.ToArray();
+        Debug.Log("Adding: " + part.prefab.name);
+        OwnedParts = partsList.ToArray();
         SaveVehicleData();
     }
 
