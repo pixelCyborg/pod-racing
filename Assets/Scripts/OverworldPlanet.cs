@@ -5,6 +5,8 @@ using UnityEngine;
 public class OverworldPlanet : MonoBehaviour
 {
     public Planet planet;
+    public List<RaceData> potentialRaces;
+
     private int raceCount = 3;
     private float planetRadius = 0.5f;
     private List<GameObject> locations;
@@ -53,11 +55,20 @@ public class OverworldPlanet : MonoBehaviour
             else
             {
                 newLocation.Initialize(Location.LocationType.Race);
+                newLocation.race = PickRace();
             }
 
             locations.Add(newLocation.gameObject);
         }
         HideLocations();
+    }
+
+    private RaceData PickRace()
+    {
+        int index = Random.Range(0, potentialRaces.Count);
+        RaceData data = potentialRaces[index];
+        potentialRaces.RemoveAt(index);
+        return data;
     }
 
     public void HideLocations()

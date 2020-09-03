@@ -102,7 +102,7 @@ public class RaceManager : MonoBehaviour
     {
         if (lapTimes != null && lapTimes.Count > 0)
         {
-            return Time.time - lapTimes[lapTimes.Count - 1];
+            return Time.time - lapTimes[lapTimes.Count - 1] - startTime;
         }
         else if (!raceStarted) return 0f;
         else return ElapsedTime();

@@ -14,7 +14,7 @@ public class MenuShortcuts : MonoBehaviour
     {
         RaceManager.raceData = DetailsUI.instance.raceData;
 
-        SceneFader.instance.QueueBaseScene("CarTest");
+        SceneFader.instance.QueueBaseScene(DetailsUI.instance.raceData.courseName);
         SceneFader.instance.QueueAdditiveScene("BaseScene");
         //SceneFader.instance.QueueAdditiveScene("Race UI");
         SceneFader.instance.FadeOut();
