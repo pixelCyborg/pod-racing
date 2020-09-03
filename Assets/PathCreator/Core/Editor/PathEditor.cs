@@ -149,12 +149,21 @@ namespace PathCreationEditor {
 
                             Vector3 worldCentre = bezierPath.CalculateBoundsWithTransform (creator.transform).center;
                             Vector3 transformPos = creator.transform.position;
+
                             if (bezierPath.Space == PathSpace.xy) {
                                 transformPos = new Vector3 (transformPos.x, transformPos.y, 0);
                             } else if (bezierPath.Space == PathSpace.xz) {
                                 transformPos = new Vector3 (transformPos.x, 0, transformPos.z);
                             }
                             Vector3 worldCentreToTransform = transformPos - worldCentre;
+                            //if (Input.GetKey(KeyCode.LeftControl))
+                            {
+                                int x, y, z;
+                                x = Mathf.RoundToInt(worldCentreToTransform.x);
+                                y = Mathf.RoundToInt(worldCentreToTransform.y);
+                                z = Mathf.RoundToInt(worldCentreToTransform.z);
+                                worldCentreToTransform = new Vector3(x, y, z);
+                            }
 
                             if (worldCentre != creator.transform.position) {
                                 //Undo.RecordObject (creator, "Centralize Transform");
@@ -556,7 +565,6 @@ namespace PathCreationEditor {
                 } else {
                     handlePosition = Handles.DoPositionHandle (handlePosition, Quaternion.identity);
                 }
-
             }
 
             switch (handleInputType) {

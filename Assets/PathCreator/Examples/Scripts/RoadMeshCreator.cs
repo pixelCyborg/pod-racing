@@ -22,6 +22,14 @@ namespace PathCreation.Examples {
         MeshRenderer meshRenderer;
         Mesh mesh;
 
+        protected BezierPath bezierPath
+        {
+            get
+            {
+                return pathCreator.bezierPath;
+            }
+        }
+
         protected override void PathUpdated () {
             if (pathCreator != null) {
                 AssignMeshComponents ();

@@ -47,7 +47,7 @@ namespace PathCreation
 
         [Header("Normals")]
         public Color normals = Color.yellow;
-        [Range(0,1)]
+        [Range(0,100)]
         public float normalsLength = .1f;
 
 #if UNITY_EDITOR
