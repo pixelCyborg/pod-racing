@@ -561,6 +561,8 @@ public class RaceVehicle : MonoBehaviour
         lap++;
         if (lap <= 1) return;
         lapTimes.Insert(0, CurrentLapTime());
+
+        if (RaceManager.raceData == null) return;
         if (lap > RaceManager.raceData.laps && finishPosition < 0) FinishRace();
         //if (GetComponent<PlayerVehicleController>()) RaceManager.instance.Lap();
     }

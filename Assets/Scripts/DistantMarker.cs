@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DistantMarker : MonoBehaviour
 {
-    private float minAlphaDistance = 300f;
-    private float maxAlphaDistance = 1000f;
+    private float minAlphaDistance = 150f;
+    private float maxAlphaDistance = 2500f;
     Transform camTransform;
     SpriteRenderer sprite;
 

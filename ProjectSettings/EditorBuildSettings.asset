@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/BaseScene.unity
     guid: b2ab475a8157d5b458aeddc2b71af227
   - enabled: 1
-    path: Assets/Scenes/Tracks/Track01.unity
+    path: Assets/Scenes/Tracks/Track01 - Ice Planet.unity
     guid: e1614e6dace90b54cb3c80ce199bde0c
   - enabled: 1
-    path: Assets/Scenes/Tracks/Track02.unity
+    path: Assets/Scenes/Tracks/Track02 - Cloud Planet.unity
     guid: c3a6ac427334f7448bd75c2474439b5f
   - enabled: 1
     path: Assets/Scenes/Tracks/Track03.unity
