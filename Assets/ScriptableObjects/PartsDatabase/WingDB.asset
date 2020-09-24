@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57d5fbeff6e2eb444ab3c2f35f2bdaa0, type: 3}
   m_Name: WingDB
   m_EditorClassIdentifier: 
-  databaseType: 3
+  databaseType: 2
   parts:
   - prefab: {fileID: 4198236288501777845, guid: 66c05985050318c449537620bde50b47,
       type: 3}
   - prefab: {fileID: 8496187300212024075, guid: 1bca8ff061e0cdc41b7fea063fed6283,
+      type: 3}
+  - prefab: {fileID: 8496187300212024075, guid: 0d1fdc0e1532bd24b955483e9fe1dcbd,
+      type: 3}
+  - prefab: {fileID: 8496187300212024075, guid: 4aa064cdba900ed44a72cc70eda705af,
       type: 3}

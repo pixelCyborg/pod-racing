@@ -25,7 +25,6 @@ public class SaveLoadSystem
             //Add default parts
             ownedParts.Add(new PartsCollection.PartRef(PartsDB.PartType.Engine, 0));
             ownedParts.Add(new PartsCollection.PartRef(PartsDB.PartType.Chassis, 0));
-            ownedParts.Add(new PartsCollection.PartRef(PartsDB.PartType.Booster, 0));
             ownedParts.Add(new PartsCollection.PartRef(PartsDB.PartType.Wing, 0));
         }
     }

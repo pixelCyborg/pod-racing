@@ -10,7 +10,6 @@ public class ShopSelection : MonoBehaviour
     public UnityEngine.RectTransform bodySelection;
     public UnityEngine.RectTransform engineSelection;
     public UnityEngine.RectTransform wingsSelection;
-    public UnityEngine.RectTransform boostSelection;
     private Vector3 activePosition;
     private Vector3 inactivePosition;
     private float transitionSpeed = 0.5f;
@@ -42,13 +41,6 @@ public class ShopSelection : MonoBehaviour
         LoadCategory(wingsSelection, PartsDB.PartType.Wing);
         ChooseSelection(wingsSelection);
     }
-
-    public void BrowseBoost()
-    {
-        LoadCategory(boostSelection, PartsDB.PartType.Booster);
-        ChooseSelection(boostSelection);
-    }
-
     private void LoadCategory(RectTransform category, PartsDB.PartType type)
     {
         PartsDB.Part[] parts = Garage.instance.GetParts(type);

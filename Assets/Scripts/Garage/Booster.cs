@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Booster : CarComponent
 {
+    //keep for archival purpose
+    /*
     public const float MIN_BOOST_FACTOR = 1.1f;
     public const float MAX_BOOST_FACTOR = 1.8f;
 
@@ -24,4 +26,5 @@ public class Booster : CarComponent
     public float boostCapacity = 100; //How large our boost tank is, this should usually be 100
     [Range(MIN_BOOST_REGEN, MAX_BOOST_REGEN)]
     public float boostRegen = 15; //How fast we get our boost meter back when not boosting
+    */
 }

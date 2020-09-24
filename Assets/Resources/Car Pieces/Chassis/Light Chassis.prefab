@@ -149,7 +149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5856272993322584428}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.6628007, y: -0.053363964, z: 5.0199986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -157,7 +157,7 @@ Transform:
   - {fileID: 8873782948362220389}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &3668156408882271793
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -181,10 +181,14 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e9a4835693d0e734aa1695821373365a, type: 2}
+  - {fileID: 2100000, guid: bfa8296105bb8944dbea18e5f3fc0784, type: 2}
+  - {fileID: 2100000, guid: 489c472163042494aa21015af14b55da, type: 2}
+  - {fileID: 2100000, guid: 656c49dc2cfd3ac4dbcdddb42d636ba8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,6 +209,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5488139525462076523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,8 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: Car Pieces/Chassis/Light Chassis
-  weight: 0.7
-  handling: 1.276
+  weight: 0.75
+  handling: 1.25
   engineParent: {fileID: 3949926091199095340}
   wingParent: {fileID: 8873782948362220389}
 --- !u!1 &6551259876149830348

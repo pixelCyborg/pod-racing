@@ -73,7 +73,6 @@ public class Garage : MonoBehaviour
 
         SetEngine(GetEngine().GetComponent<Engine>());
         SetWing(GetWing().GetComponent<Wing>());
-        SetBooster(GetBooster().GetComponent<Booster>());
     }
 
     public static GameObject GetWing()
@@ -88,12 +87,6 @@ public class Garage : MonoBehaviour
         return PartsCollection.Instance.GetPartFromRef(data.engine).prefab;
     }
 
-    public static GameObject GetBooster()
-    {
-        if (data.booster == null) return null;
-        return PartsCollection.Instance.GetPartFromRef(data.booster).prefab;
-    }
-
     public PartsDB.Part[] GetParts(PartsDB.PartType type)
     {
         List<PartsDB.Part> parts = new List<PartsDB.Part>();
@@ -106,9 +99,6 @@ public class Garage : MonoBehaviour
                     break;
                 case PartsDB.PartType.Engine:
                     if (OwnedParts[i].prefab.GetComponent<Engine>()) parts.Add(OwnedParts[i]);
-                    break;
-                case PartsDB.PartType.Booster:
-                    if (OwnedParts[i].prefab.GetComponent<Booster>()) parts.Add(OwnedParts[i]);
                     break;
                 case PartsDB.PartType.Wing:
                     if (OwnedParts[i].prefab.GetComponent<Wing>()) parts.Add(OwnedParts[i]);
@@ -135,6 +125,11 @@ public class Garage : MonoBehaviour
         data.chassis = PartsCollection.Instance.GetPartRef(chassis.gameObject);
         data.weight = chassis.weight;
         data.handling = chassis.handling;
+        data.acceleration = chassis.acceleration;
+        data.velocityDrag = chassis.velocityDrag;
+
+        StatsDisplay.instance.UpdateAcceleration(chassis.acceleration);
+        StatsDisplay.instance.UpdateMaxSpeed(chassis.acceleration, chassis.velocityDrag);
 
 
         SpawnChassis(chassis);
@@ -143,28 +138,16 @@ public class Garage : MonoBehaviour
     public void SetEngine(Engine engine)
     {
         data.engine = PartsCollection.Instance.GetPartRef(engine.gameObject);
-        data.acceleration = engine.acceleration;
-        data.velocityDrag = engine.velocityDrag;
+        data.boostCapacity = engine.boostCapacity;
+        data.boostCost = engine.boostCost;
+        data.boostFactor = engine.boostFactor;
+        data.boostRegen = engine.boostRegen;
 
-        StatsDisplay.instance.UpdateAcceleration(engine.acceleration);
-        StatsDisplay.instance.UpdateMaxSpeed(engine.acceleration, engine.velocityDrag);
+        StatsDisplay.instance.UpdateBoostEfficiency(engine.boostCapacity, engine.boostCost);
+        StatsDisplay.instance.UpdateBoostPower(engine.boostFactor);
+        StatsDisplay.instance.UpdateBoostRegen(engine.boostRegen);
 
         car.SetEngine(engine);
-    }
-
-    public void SetBooster(Booster booster)
-    {
-        data.booster = PartsCollection.Instance.GetPartRef(booster.gameObject);
-        data.boostCapacity = booster.boostCapacity;
-        data.boostCost = booster.boostCost;
-        data.boostFactor = booster.boostFactor;
-        data.boostRegen = booster.boostRegen;
-
-        StatsDisplay.instance.UpdateBoostEfficiency(booster.boostCapacity, booster.boostCost);
-        StatsDisplay.instance.UpdateBoostPower(booster.boostFactor);
-        StatsDisplay.instance.UpdateBoostRegen(booster.boostRegen);
-
-        car.SetBooster(booster);
     }
 
     public void SetWing(Wing wing)

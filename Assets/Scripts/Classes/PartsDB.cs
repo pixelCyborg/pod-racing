@@ -7,7 +7,7 @@ public class PartsDB : ScriptableObject
 {
     public enum PartType
     {
-        Chassis, Engine, Booster, Wing
+        Chassis, Engine, Wing
     }
     [System.Serializable]
     public class Part

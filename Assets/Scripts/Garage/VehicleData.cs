@@ -5,14 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class VehicleData
 {
+    //Chassis
     public float weight; //This increases max speed but decreases acceleration
     public float handling; //Increases turn speed, strafe speed
-
-    //Throttle / Main Engine
     public float acceleration = 0.14f; //Horsepower of the engine, more acceleration = more zoom zoom
     public float velocityDrag = 0.98f; //Rate at which our velocity slows down
 
-    //Booster
+    //Engine
     public float boostFactor = 1.2f; //Just a multiplier of how much the boost increases our acceleration. The power of the booster
     public float boostCost = 25; //How much the booster costs to keep going. This should increase along with the boostFactor
     public float boostCapacity = 100; //How large our boost tank is, this should usually be 100
@@ -32,13 +31,11 @@ public class VehicleData
     public PartsCollection.PartRef chassis;
     public PartsCollection.PartRef wing;
     public PartsCollection.PartRef engine;
-    public PartsCollection.PartRef booster;
 
     public VehicleData()
     {
         chassis = PartsCollection.Instance.DefaultChassis();
         engine = PartsCollection.Instance.DefaultEngine();
         wing = PartsCollection.Instance.DefaultWings();
-        booster = PartsCollection.Instance.DefaultBooster();
     }
 }

@@ -27,11 +27,6 @@ public class ShopPartButton : MonoBehaviour
                     Garage.instance.SetEngine(component as Engine);
                 });
                 break;
-            case PartsDB.PartType.Booster:
-                button.onClick.AddListener(() => {
-                    Garage.instance.SetBooster(component as Booster);
-                });
-                break;
             case PartsDB.PartType.Wing:
                 button.onClick.AddListener(() => {
                     Garage.instance.SetWing(component as Wing);

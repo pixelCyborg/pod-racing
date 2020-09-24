@@ -18,11 +18,11 @@ public class StatsDisplay : MonoBehaviour
     {
         instance = this;
 
-        acceleration.SetLimits(Engine.MIN_ACCELERATION, Engine.MAX_ACCELERATION);
+        acceleration.SetLimits(Chassis.MIN_ACCELERATION, Chassis.MAX_ACCELERATION);
         topSpeed.SetLimits(MinSpeed(), MaxSpeed());
-        boostPower.SetLimits(Booster.MIN_BOOST_FACTOR, Booster.MAX_BOOST_FACTOR);
+        boostPower.SetLimits(Engine.MIN_BOOST_FACTOR, Engine.MAX_BOOST_FACTOR);
         boostEfficiency.SetLimits(MinBoostEfficiency(), MaxBoostEfficiency());
-        boostRegen.SetLimits(Booster.MIN_BOOST_REGEN, Booster.MAX_BOOST_REGEN);
+        boostRegen.SetLimits(Engine.MIN_BOOST_REGEN, Engine.MAX_BOOST_REGEN);
         turnSpeed.SetLimits(Wing.MIN_MAX_TURN, Wing.MAX_MAX_TURN);
         control.SetLimits(Wing.MIN_TURN_DRAG, Wing.MAX_TURN_DRAG);
     }
@@ -69,22 +69,22 @@ public class StatsDisplay : MonoBehaviour
 
     private float MinBoostEfficiency()
     {
-        return (Booster.MIN_BOOST_CAPACITY / Booster.MAX_BOOST_COST);
+        return (Engine.MIN_BOOST_CAPACITY / Engine.MAX_BOOST_COST);
     }
 
     private float MaxBoostEfficiency()
     {
-        return (Booster.MAX_BOOST_CAPACITY / Booster.MIN_BOOST_COST);
+        return (Engine.MAX_BOOST_CAPACITY / Engine.MIN_BOOST_COST);
     }
 
     private float MinSpeed()
     {
-        return SimulateMaxSpeed(Engine.MIN_ACCELERATION, Engine.MIN_VELOCITY_DRAG);
+        return SimulateMaxSpeed(Chassis.MIN_ACCELERATION, Chassis.MIN_VELOCITY_DRAG);
     }
 
     private float MaxSpeed()
     {
-        return SimulateMaxSpeed(Engine.MAX_ACCELERATION, Engine.MAX_VELOCITY_DRAG);
+        return SimulateMaxSpeed(Chassis.MAX_ACCELERATION, Chassis.MAX_VELOCITY_DRAG);
     }
 
     //Brute force solution then store the value. Math is for suckers.

@@ -33,7 +33,6 @@ public class PartsCollection : ScriptableObject
 
     public PartsDB chassis;
     public PartsDB engines;
-    public PartsDB boosters;
     public PartsDB wings;
 
     public PartRef[] GetPartRefs(PartsDB.Part[] parts)
@@ -59,16 +58,6 @@ public class PartsCollection : ScriptableObject
                 if (GameObject.Equals(chassis.parts[i].prefab, part.prefab))
                 {
                     return new PartRef(PartsDB.PartType.Chassis, i);
-                }
-            }
-        }
-        else if (part.prefab.GetComponent<Booster>())
-        {
-            for (int i = 0; i < boosters.parts.Count; i++)
-            {
-                if (GameObject.Equals(boosters.parts[i].prefab, part.prefab))
-                {
-                    return new PartRef(PartsDB.PartType.Booster, i);
                 }
             }
         }
@@ -110,16 +99,6 @@ public class PartsCollection : ScriptableObject
                 }
             }
         }
-        else if (go.GetComponent<Booster>())
-        {
-            for (int i = 0; i < boosters.parts.Count; i++)
-            {
-                if (GameObject.Equals(boosters.parts[i].prefab, go))
-                {
-                    return new PartRef(PartsDB.PartType.Booster, i);
-                }
-            }
-        }
         else if (go.GetComponent<Engine>())
         {
             for (int i = 0; i < engines.parts.Count; i++)
@@ -152,8 +131,6 @@ public class PartsCollection : ScriptableObject
                 return chassis.parts[partRef.index];
             case PartsDB.PartType.Engine:
                 return engines.parts[partRef.index];
-            case PartsDB.PartType.Booster:
-                return boosters.parts[partRef.index];
             case PartsDB.PartType.Wing:
                 return wings.parts[partRef.index];
         }
@@ -176,27 +153,16 @@ public class PartsCollection : ScriptableObject
         return new PartsCollection.PartRef(PartsDB.PartType.Wing, 0);
     }
 
-    public PartRef DefaultBooster()
-    {
-        return new PartsCollection.PartRef(PartsDB.PartType.Booster, 0);
-    }
-
     public PartsDB.Part[] GetParts(PartsDB.PartType type)
     {
         switch (type)
         {
             case PartsDB.PartType.Chassis:
                 return chassis.parts.ToArray();
-                break;
             case PartsDB.PartType.Engine:
                 return engines.parts.ToArray();
-                break;
             case PartsDB.PartType.Wing:
                 return wings.parts.ToArray();
-                break;
-            case PartsDB.PartType.Booster:
-                return boosters.parts.ToArray();
-                break;
         }
 
         return null;
@@ -219,11 +185,6 @@ public class PartsCollection : ScriptableObject
             if (GameObject.Equals(_part, wings.parts[i].prefab)) return wings.parts[i];
         }
 
-        for (int i = 0; i < boosters.parts.Count; i++)
-        {
-            if (GameObject.Equals(_part, boosters.parts[i].prefab)) return boosters.parts[i];
-        }
-
         return null;
     }
 
@@ -238,12 +199,9 @@ public class PartsCollection : ScriptableObject
                 part = engines.parts[Random.Range(0, engines.parts.Count)];
                 break;
             case 1:
-                part = boosters.parts[Random.Range(0, boosters.parts.Count)];
-                break;
-            case 2:
                 part = chassis.parts[Random.Range(0, chassis.parts.Count)];
                 break;
-            case 3:
+            case 2:
             default:
                 part = wings.parts[Random.Range(0, wings.parts.Count)];
                 break;
