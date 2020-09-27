@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A4D18069-FFDE-4D7C-B9EE-16476CB0C17D}" SchemaVersion="97">
+	<Switches>
+		<WorkUnit Name="Default Work Unit" ID="{A4D18069-FFDE-4D7C-B9EE-16476CB0C17D}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Collison_Track" ID="{0C095DBC-EF34-4930-99B6-35F65525C829}"/>
+				<SwitchGroup Name="Collison_Barrier" ID="{A02A9E5A-5BC2-434A-8C0B-B0902F2EEA7A}"/>
+				<SwitchGroup Name="Collison_Vehicle" ID="{1357CACD-A664-4377-A0C3-9CBB4A786DFA}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Switches>
+</WwiseDocument>
