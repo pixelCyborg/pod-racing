@@ -10,6 +10,7 @@ public class DetailsUI : MonoBehaviour
     public CanvasGroup raceUI;
 
     public static DetailsUI instance;
+    public Planet currentPlanet;
     public RaceData raceData;
     Vector3 origScale;
     float animTime = 0.33f;
@@ -55,6 +56,7 @@ public class DetailsUI : MonoBehaviour
 
     public void ShowPlanet(Planet planetData)
     {
+        currentPlanet = planetData;
         planet.text = planetData.name;
         planetDescription.text = planetData.description;
 

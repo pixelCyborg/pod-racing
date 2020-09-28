@@ -18,5 +18,6 @@ public class MerchantButton : MonoBehaviour
     public void Select()
     {
         MerchantWindow.instance.SelectPart(part);
+        ShopPreview.instance.SetPreview(part.prefab);
     }
 }

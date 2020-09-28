@@ -133,7 +133,7 @@ Material:
     - _HighlightMultiplier: 2
     - _HighlightThreshold: 0.9
     - _LightingInfluence: 1
-    - _Metalic: 1
+    - _Metalic: 0.8
     - _Metallic: 1
     - _Mode: 0
     - _NormalMult: 0.33
