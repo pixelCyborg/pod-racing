@@ -20,11 +20,11 @@ public class OverworldPlanet : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            DetailsUI.instance.ShowPlanet(planet);
             OverworldPlayer.instance.Stop();
             OverviewCamera.instance.Focus(transform.position, GetComponent<SphereCollider>());
             OverviewCamera.instance.onUnfocus.AddListener(HideLocations);
             ShowLocations();
+            DetailsUI.instance.ShowPlanet(planet);
         }
     }
 

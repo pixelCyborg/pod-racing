@@ -17,6 +17,7 @@ public class OverviewCamera : MonoBehaviour
     public Vector2 sensitivity = Vector2.one;
     Vector3 camSpeed;
     public UnityEvent onUnfocus;
+    public bool rotDisabled = false;
 
 
     private void Start()
@@ -31,6 +32,7 @@ public class OverviewCamera : MonoBehaviour
     void Update()
     {
         if(!zoomed) return;
+        if (rotDisabled) return;
         if (Input.GetMouseButton(0))
         {
             float x = Input.GetAxis("Mouse X") * sensitivity.x;

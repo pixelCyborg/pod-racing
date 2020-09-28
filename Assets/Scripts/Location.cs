@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Location : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Location : MonoBehaviour
     public RaceData race;
     LayerMask markerMask;
     public LocationType type;
+    public Transform locationMarker;
+    Vector3 origScale;
+    bool hovered, prevHovered;
 
     public enum LocationType
     {
@@ -16,11 +20,16 @@ public class Location : MonoBehaviour
 
     public void Initialize(LocationType _type)
     {
+        origScale = locationMarker.localScale;
         type = _type;
 
         if(type == LocationType.Merchant)
         {
             SetColor(Color.green);
+        }
+        else
+        {
+            SetColor(Color.white);
         }
     }
 
@@ -29,7 +38,9 @@ public class Location : MonoBehaviour
         MeshRenderer[] rends = GetComponentsInChildren<MeshRenderer>();
         for(int i = 0; i < rends.Length; i++)
         {
-            rends[i].material.SetColor("_BaseColor", color);
+            Color newColor = color;
+            newColor.a = rends[i].material.color.a;
+            rends[i].material.SetColor("_BaseColor", newColor);
         }
     }
 
@@ -40,9 +51,32 @@ public class Location : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (OverviewCamera.instance.rotDisabled) return;
+
+
+        hovered = false;
+        //Mouse Hover
+        RaycastHit hit;
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, markerMask))
         {
-            RaycastHit hit;
+            if (GameObject.Equals(hit.transform.gameObject, gameObject))
+            {
+                locationMarker.DOKill();
+                if (!hovered) locationMarker.DOScale(origScale * 1.2f, 0.33f);
+                hovered = true;
+            }
+        }
+        if(prevHovered && !hovered)
+        {
+            locationMarker.DOKill();
+            locationMarker.DOScale(origScale, 0.33f);
+        }
+        prevHovered = hovered;
+        //=============
+
+        //On Click
+        if (Input.GetMouseButtonDown(0))
+        {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, markerMask))
             {
                 if(GameObject.Equals(hit.transform.gameObject, gameObject))
@@ -61,6 +95,8 @@ public class Location : MonoBehaviour
         if (type == LocationType.Merchant)
         {
             MerchantWindow.instance.Toggle(true);
+            DetailsUI.instance.HidePlanet();
+            DetailsUI.instance.HideRace();
         }
         else if (type == LocationType.Race)
         {

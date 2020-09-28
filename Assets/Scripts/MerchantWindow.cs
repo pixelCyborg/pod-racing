@@ -36,6 +36,8 @@ public class MerchantWindow : MonoBehaviour
     {
         if(!enabled)
         {
+            DetailsUI.instance.ShowPlanet(DetailsUI.instance.currentPlanet);
+            OverviewCamera.instance.rotDisabled = false;
             group.interactable = false;
             group.blocksRaycasts = false;
         }
@@ -44,6 +46,7 @@ public class MerchantWindow : MonoBehaviour
         {
             if(enabled)
             {
+                OverviewCamera.instance.rotDisabled = false;
                 group.interactable = true;
                 group.blocksRaycasts = true;
             }
@@ -73,6 +76,7 @@ public class MerchantWindow : MonoBehaviour
         Garage.AddPart(part);
         componentInventory.Remove(part);
         PopulateMerchant(componentInventory.ToArray());
+        ClearSelection();
     }
 
     public void SelectPart(PartsDB.Part part)
