@@ -10,6 +10,8 @@ public class OverworldPlanet : MonoBehaviour
     private int raceCount = 3;
     private float planetRadius = 0.5f;
     private List<GameObject> locations;
+    private List<LineRenderer> lines = new List<LineRenderer>();
+    public GameObject linePrefab;
 
     private void Start()
     {
@@ -60,7 +62,40 @@ public class OverworldPlanet : MonoBehaviour
 
             locations.Add(newLocation.gameObject);
         }
+
+        for(int i = 0; i < locations.Count; i++)
+        {
+            if(i < locations.Count - 1)
+            {
+                ConnectLocations(locations[i].transform.localPosition, locations[i + 1].transform.localPosition);
+            }
+        } 
         HideLocations();
+    }
+
+    public void ConnectLocations(Vector3 pointA, Vector3 pointB)
+    {
+        List<Vector3> points = new List<Vector3>();
+        int positionCount = 25;
+        for(int i = 0; i < positionCount; i++)
+        {
+            float t = (float)i / (float)positionCount;
+            points.Add(Vector3.Slerp(pointA, pointB, t) * transform.localScale.x * 1.02f + transform.position);
+        }
+        points.Add(pointB * transform.localScale.x * 1.02f + transform.position);
+
+        LineRenderer lineRend = SpawnLineRend();
+        lines.Add(lineRend);
+        lineRend.positionCount = points.Count;
+        lineRend.widthMultiplier = 0.005f * transform.localScale.x;
+        lineRend.SetPositions(points.ToArray());
+        
+    }
+
+    private LineRenderer SpawnLineRend()
+    {
+        GameObject go = Instantiate(linePrefab);
+        return go.GetComponent<LineRenderer>();
     }
 
     private RaceData PickRace()
