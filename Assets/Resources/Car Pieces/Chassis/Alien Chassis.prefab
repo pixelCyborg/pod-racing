@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330136772}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.25, z: -0.3599852}
+  m_LocalPosition: {x: 0, y: 1.25, z: -0.01}
   m_LocalScale: {x: 1.5, y: 1.5, z: -1.5}
   m_Children: []
   m_Father: {fileID: 158267722}
@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765480218}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.25, z: -0.35998547}
+  m_LocalPosition: {x: 0, y: -1.25, z: -0.010000199}
   m_LocalScale: {x: 1.5, y: 1.4999999, z: 1.4999999}
   m_Children: []
   m_Father: {fileID: 158267722}
@@ -255,5 +255,7 @@ MonoBehaviour:
   path: Car Pieces/Chassis/Alien Chassis
   weight: 1.25
   handling: 0.75
+  acceleration: 0.14
+  velocityDrag: 0.98
   engineParent: {fileID: 1697507413}
   wingParent: {fileID: 158267722}
