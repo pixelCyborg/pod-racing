@@ -98,7 +98,7 @@ public class RaceVehicle : MonoBehaviour
     //Unity engine physics
     Rigidbody body;
 
-    //Control Input Functions
+    //Control Input Functions ====================================
     public void SetTurn(float _turn)
     {
         turn = _turn;
@@ -232,17 +232,6 @@ public class RaceVehicle : MonoBehaviour
         UpdateEngineSound();
     }
 
-    public void UpdateUI()
-    {
-        BoostMeter.instance.SetBoost(currentFuel, boostCapacity);
-
-        if (Speedometer.instance != null)
-        {
-            Speedometer.instance.SetSpeed(velocity_throttle, MaxSpeed());
-            Speedometer.instance.SetStrafe(velocity_strafe);
-        }
-    }
-
     //Physics stuff goes here
     private void FixedUpdate()
     {
@@ -261,6 +250,9 @@ public class RaceVehicle : MonoBehaviour
         UpdateVelocities();
     }
 
+    // Stuff that keeps the cars from flying off the track ===========================
+
+    //FOR PHERYL -- This is were we do our hovering/ground detection. There should be a good spot to implement collision with ground in here
     void MagnetizeToGround()
     {
         RaycastHit hit;
@@ -269,6 +261,8 @@ public class RaceVehicle : MonoBehaviour
             ToggleCustomPhysics(true);
 
             float magnetism = Time.fixedDeltaTime * magnetizeSpeed;
+
+            //If we are too close to the ground, clamp the hover value. This is where we would probably put a collision with ground effect
             if (hit.distance < hoverDistance * 0.2f)
             {
                 transform.position = hit.point + transform.up * hoverDistance* 0.2f;
@@ -308,6 +302,8 @@ public class RaceVehicle : MonoBehaviour
             }
         }
     }
+
+    //Movement and rotation Calculations =======================
 
     void ToggleCustomPhysics(bool enabled)
     {
@@ -405,12 +401,6 @@ public class RaceVehicle : MonoBehaviour
         if (velocity_turn < -MaxTurn()) velocity_turn = -MaxTurn();
     }
 
-    //ALEX LOOK HERE THIS
-    private void UpdateEngineSound()
-    {
-        engineSource.pitch = 1.0f+ (CurrentOutOfMaxSpeed() * speedDetune);
-    }
-
     private void HandleCameraShake()
     {
         float shake = ShakeValue();
@@ -437,12 +427,35 @@ public class RaceVehicle : MonoBehaviour
         return currentAboveThreshold / maxAboveThreshold;
     }
 
+    //FOR PHERYL - this is calculates what value out of our max speed we are moving, on a scale from 0 - 1.0
+    //It is possible to exceed 1.0 (100%) speed with boost pads and engine boost
     private float CurrentOutOfMaxSpeed()
     {
         float val = 0.0f;
         val = velocity_throttle / MaxSpeed();
         return val;
     }
+
+    //FOR PHERYL - this is where I am currently shifting the pitch of the engine sound, to make it sound more dynamic
+    private void UpdateEngineSound()
+    {
+                        //Base Sound + Increase pitch based on current speed * a multiplicative factor that we establish
+        engineSource.pitch = 1.0f + (CurrentOutOfMaxSpeed() * speedDetune);
+    }
+
+    public void UpdateUI()
+    {
+        BoostMeter.instance.SetBoost(currentFuel, boostCapacity);
+
+        if (Speedometer.instance != null)
+        {
+            Speedometer.instance.SetSpeed(velocity_throttle, MaxSpeed());
+            Speedometer.instance.SetStrafe(velocity_strafe);
+        }
+    }
+
+
+    //Collision and Physics Stuff ==============================================================
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -471,6 +484,9 @@ public class RaceVehicle : MonoBehaviour
         return false;
     }
 
+    //FOR PHERYL - OnCollisionEnter and PreCheckCollision will both call this function if they detect a collision with an object
+    //'impactForce' is a variable that ranges from 0.1 to 1.0 that tells us how fast we were going on impact
+    //the parameter 'solid' tells us if it was a wall or something else (another car)
     private void Collide(Vector3 collisionNormal, bool solid = false)
     {
         inertia = Vector3.zero;
@@ -485,10 +501,16 @@ public class RaceVehicle : MonoBehaviour
         inertia = collisionNormal;
         inertia *= impactForce * forceMultiplier;
 
+        //We hit a wall
         if (solid)
         {
             velocity_strafe = -velocity_strafe;
             velocity_throttle *= 0.8f;
+        }
+        //We hit another vehicle
+        else
+        {
+
         }
 
         Vector3 down = -transform.up;
@@ -556,7 +578,7 @@ public class RaceVehicle : MonoBehaviour
         }
     }
 
-    //Race positions
+    //Race Laps And Completion =======================================
     public void Lap()
     {
         lap++;
@@ -627,6 +649,8 @@ public class RaceVehicle : MonoBehaviour
         Debug.Log(name + " finished in " + finishPosition + "!");
         OnRaceComplete.Invoke();
     }
+
+    //Player Parts ==================================================
 
     public void LoadPlayerVehicle(string saveName = "")
     {

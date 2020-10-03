@@ -5288,7 +5288,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 116251493}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &41373632
 SphereCollider:
@@ -5370,13 +5370,25 @@ MonoBehaviour:
     currentEvents: []
   potentialRaces:
   - laps: 3
-    courseName: Track01
+    courseName: Track01 - Glacier
     prizePool: 5000
   - laps: 3
-    courseName: Track02
+    courseName: Track02 - Cloud Planet
     prizePool: 8000
   - laps: 2
     courseName: Track03
+    prizePool: 10000
+  - laps: 3
+    courseName: Track04 - Urban
+    prizePool: 10000
+  - laps: 3
+    courseName: Track05 - Desert
+    prizePool: 10000
+  - laps: 3
+    courseName: Track06 - Megafauna
+    prizePool: 10000
+  - laps: 3
+    courseName: Track07 - Ocean Planet
     prizePool: 10000
   linePrefab: {fileID: 5530561310922558718, guid: 7ffa7ce74cbbb1149a912dc61fb0f670,
     type: 3}
@@ -5723,7 +5735,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1486944587}
   - {fileID: 301508851}
   - {fileID: 995725262}
   - {fileID: 319429731}
@@ -5731,7 +5742,7 @@ Transform:
   - {fileID: 41373631}
   - {fileID: 327798764}
   m_Father: {fileID: 272626904}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160137315
 GameObject:
@@ -6371,6 +6382,7 @@ Transform:
   - {fileID: 1775570137}
   - {fileID: 1967092057}
   - {fileID: 1415743190}
+  - {fileID: 1486944587}
   - {fileID: 116251493}
   - {fileID: 1683111446}
   m_Father: {fileID: 0}
@@ -6684,7 +6696,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 116251493}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &301508852
 MonoBehaviour:
@@ -6704,13 +6716,25 @@ MonoBehaviour:
     currentEvents: []
   potentialRaces:
   - laps: 3
-    courseName: Track01
+    courseName: Track01 - Glacier
     prizePool: 5000
   - laps: 3
-    courseName: Track02
+    courseName: Track02 - Cloud Planet
     prizePool: 8000
   - laps: 2
     courseName: Track03
+    prizePool: 10000
+  - laps: 3
+    courseName: Track04 - Urban
+    prizePool: 10000
+  - laps: 3
+    courseName: Track05 - Desert
+    prizePool: 10000
+  - laps: 3
+    courseName: Track06 - Megafauna
+    prizePool: 10000
+  - laps: 3
+    courseName: Track07 - Ocean Planet
     prizePool: 10000
   linePrefab: {fileID: 5530561310922558718, guid: 7ffa7ce74cbbb1149a912dc61fb0f670,
     type: 3}
@@ -6828,7 +6852,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 116251493}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &319429732
 SphereCollider:
@@ -6910,13 +6934,25 @@ MonoBehaviour:
     currentEvents: []
   potentialRaces:
   - laps: 3
-    courseName: Track01
+    courseName: Track01 - Glacier
     prizePool: 5000
   - laps: 3
-    courseName: Track02
+    courseName: Track02 - Cloud Planet
     prizePool: 8000
   - laps: 2
     courseName: Track03
+    prizePool: 10000
+  - laps: 3
+    courseName: Track04 - Urban
+    prizePool: 10000
+  - laps: 3
+    courseName: Track05 - Desert
+    prizePool: 10000
+  - laps: 3
+    courseName: Track06 - Megafauna
+    prizePool: 10000
+  - laps: 3
+    courseName: Track07 - Ocean Planet
     prizePool: 10000
   linePrefab: {fileID: 5530561310922558718, guid: 7ffa7ce74cbbb1149a912dc61fb0f670,
     type: 3}
@@ -6952,7 +6988,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 116251493}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &327798765
 SphereCollider:
@@ -7034,13 +7070,25 @@ MonoBehaviour:
     currentEvents: []
   potentialRaces:
   - laps: 3
-    courseName: Track01
+    courseName: Track01 - Glacier
     prizePool: 5000
   - laps: 3
-    courseName: Track02
+    courseName: Track02 - Cloud Planet
     prizePool: 8000
   - laps: 2
     courseName: Track03
+    prizePool: 10000
+  - laps: 3
+    courseName: Track04 - Urban
+    prizePool: 10000
+  - laps: 3
+    courseName: Track05 - Desert
+    prizePool: 10000
+  - laps: 3
+    courseName: Track06 - Megafauna
+    prizePool: 10000
+  - laps: 3
+    courseName: Track07 - Ocean Planet
     prizePool: 10000
   linePrefab: {fileID: 5530561310922558718, guid: 7ffa7ce74cbbb1149a912dc61fb0f670,
     type: 3}
@@ -14245,7 +14293,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 116251493}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &995725263
 SphereCollider:
@@ -14327,13 +14375,25 @@ MonoBehaviour:
     currentEvents: []
   potentialRaces:
   - laps: 3
-    courseName: Track01
+    courseName: Track01 - Glacier
     prizePool: 5000
   - laps: 3
-    courseName: Track02
+    courseName: Track02 - Cloud Planet
     prizePool: 8000
   - laps: 2
     courseName: Track03
+    prizePool: 10000
+  - laps: 3
+    courseName: Track04 - Urban
+    prizePool: 10000
+  - laps: 3
+    courseName: Track05 - Desert
+    prizePool: 10000
+  - laps: 3
+    courseName: Track06 - Megafauna
+    prizePool: 10000
+  - laps: 3
+    courseName: Track07 - Ocean Planet
     prizePool: 10000
   linePrefab: {fileID: 5530561310922558718, guid: 7ffa7ce74cbbb1149a912dc61fb0f670,
     type: 3}
@@ -22532,8 +22592,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
-  m_Father: {fileID: 116251493}
-  m_RootOrder: 0
+  m_Father: {fileID: 272626904}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1486944588
 SphereCollider:
@@ -23605,7 +23665,7 @@ Transform:
   m_LocalScale: {x: 30, y: 0, z: 30}
   m_Children: []
   m_Father: {fileID: 272626904}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1683111447
 MeshRenderer:
@@ -34384,7 +34444,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 116251493}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1845854803
 SphereCollider:
@@ -34466,13 +34526,25 @@ MonoBehaviour:
     currentEvents: []
   potentialRaces:
   - laps: 3
-    courseName: Track01
+    courseName: Track01 - Glacier
     prizePool: 5000
   - laps: 3
-    courseName: Track02
+    courseName: Track02 - Cloud Planet
     prizePool: 8000
   - laps: 2
     courseName: Track03
+    prizePool: 10000
+  - laps: 3
+    courseName: Track04 - Urban
+    prizePool: 10000
+  - laps: 3
+    courseName: Track05 - Desert
+    prizePool: 10000
+  - laps: 3
+    courseName: Track06 - Megafauna
+    prizePool: 10000
+  - laps: 3
+    courseName: Track07 - Ocean Planet
     prizePool: 10000
   linePrefab: {fileID: 5530561310922558718, guid: 7ffa7ce74cbbb1149a912dc61fb0f670,
     type: 3}
