@@ -93,6 +93,7 @@ public class DetailsUI : MonoBehaviour
 
     public void Hide()
     {
+        Debug.Log(StackTraceUtility.ExtractStackTrace());
         HidePlanet();
         HideRace();
         OverviewCamera.instance.UnFocus();

@@ -6,7 +6,7 @@ public class OverworldPlanet : MonoBehaviour
 {
     public Planet planet;
     public List<RaceData> potentialRaces;
-
+    public int planetIndex; 
     private int raceCount = 3;
     private float planetRadius = 0.5f;
     private List<GameObject> locations;
@@ -22,12 +22,24 @@ public class OverworldPlanet : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            OverworldPlayer.instance.Stop();
-            OverviewCamera.instance.Focus(transform.position, GetComponent<SphereCollider>());
-            OverviewCamera.instance.onUnfocus.AddListener(HideLocations);
-            ShowLocations();
-            DetailsUI.instance.ShowPlanet(planet);
+            Land();
         }
+    }
+
+    private void OnMouseDown()
+    {
+        if(!OverviewCamera.instance.zoomed) Land();
+    }
+
+    public void Land()
+    {
+        if(OverworldPlayer.instance) OverworldPlayer.instance.Stop();
+        OverviewCamera.instance.Focus(transform.position, GetComponent<SphereCollider>());
+        OverviewCamera.instance.onUnfocus.AddListener(HideLocations);
+        ShowLocations();
+        Overworld.instance.currentPlanetIndex = planetIndex;
+        Overworld.instance.HideSolarMap();
+        DetailsUI.instance.ShowPlanet(planet);
     }
 
     private void Populate()
@@ -113,6 +125,10 @@ public class OverworldPlanet : MonoBehaviour
         {
             locations[i].SetActive(false);
         }
+        for(int i = 0; i < lines.Count; i++)
+        {
+            lines[i].enabled = false;
+        }
     }
 
     public void ShowLocations()
@@ -120,6 +136,10 @@ public class OverworldPlanet : MonoBehaviour
         for (int i = 0; i < locations.Count; i++)
         {
             locations[i].SetActive(true);
+        }
+        for (int i = 0; i < lines.Count; i++)
+        {
+            lines[i].enabled = true;
         }
     }
 

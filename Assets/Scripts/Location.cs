@@ -5,11 +5,13 @@ using DG.Tweening;
 
 public class Location : MonoBehaviour
 {
+    private static Location currentLocation;
     [HideInInspector] 
     public RaceData race;
     LayerMask markerMask;
     public LocationType type;
     public Transform locationMarker;
+    public MeshRenderer playerMarker;
     Vector3 origScale;
     bool hovered, prevHovered;
 
@@ -20,6 +22,7 @@ public class Location : MonoBehaviour
 
     public void Initialize(LocationType _type)
     {
+        playerMarker.enabled = false;
         origScale = locationMarker.localScale;
         type = _type;
 
@@ -89,8 +92,12 @@ public class Location : MonoBehaviour
 
     private void Open()
     {
+        if (currentLocation != null) currentLocation.playerMarker.enabled = false;
+
         Debug.Log("Location Clicked!");
+        playerMarker.enabled = true;
         OverworldPlanet planet = transform.GetComponentInParent<OverworldPlanet>();
+        currentLocation = this;
 
         if (type == LocationType.Merchant)
         {

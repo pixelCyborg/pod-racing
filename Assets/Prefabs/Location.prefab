@@ -228,6 +228,7 @@ MonoBehaviour:
     prizePool: 0
   type: 0
   locationMarker: {fileID: 8940060793988372161}
+  playerMarker: {fileID: 8266975046429853871}
 --- !u!1 &8940060793988372160
 GameObject:
   m_ObjectHideFlags: 0

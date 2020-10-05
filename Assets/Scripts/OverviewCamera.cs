@@ -81,5 +81,6 @@ public class OverviewCamera : MonoBehaviour
         anchor.DORotate(origRot, transitionTime);
         transform.DOLocalMoveZ(origZPos, transitionTime);
         onUnfocus.Invoke();
+        Overworld.instance.ShowSolarMap();
     }
 }

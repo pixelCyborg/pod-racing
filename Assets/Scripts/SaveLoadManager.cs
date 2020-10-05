@@ -14,6 +14,8 @@ public class SaveLoadSystem
         public int credits;
         public VehicleData vehicle;
         public List<PartsCollection.PartRef> ownedParts;
+        public int planetIndex;
+        public string location;
 
         public SaveData(string _name)
         {
@@ -29,15 +31,19 @@ public class SaveLoadSystem
         }
     }
 
+    public static string SaveName;
     private static SaveData currentSave;
 
     public static void Save(string saveName = "")
     {
         //Update the current save data, creating a new one if there isn't one
+        if (string.IsNullOrEmpty(SaveName)) saveName = SaveName;
         if (saveName == "") saveName = "player";
         if (currentSave == null) currentSave = new SaveData(saveName);
         currentSave.vehicle = Garage.data;
         currentSave.credits = CreditsTracker.Credits();
+        currentSave.planetIndex = Overworld.instance.currentPlanetIndex;
+        //currentSave.location = Location.
 
         PartsCollection.PartRef[] parts = PartsCollection.Instance.GetPartRefs(Garage.OwnedParts);
         currentSave.ownedParts = new List<PartsCollection.PartRef>(parts);
@@ -102,6 +108,12 @@ public class SaveLoadSystem
     {
         if (currentSave == null) Load();
         return currentSave.credits;
+    }
+
+    public static int CurrentPlanetIndex()
+    {
+        if (currentSave == null) Load();
+        return currentSave.planetIndex;
     }
 
     public static PartsDB.Part[] OwnedParts()
