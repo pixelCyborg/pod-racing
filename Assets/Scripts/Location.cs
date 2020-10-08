@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Location : MonoBehaviour
 {
-    private static Location currentLocation;
+    public static Location currentLocation;
     [HideInInspector] 
     public RaceData race;
     LayerMask markerMask;
@@ -14,6 +14,9 @@ public class Location : MonoBehaviour
     public MeshRenderer playerMarker;
     Vector3 origScale;
     bool hovered, prevHovered;
+
+    public Vector3 rotCoords;
+    public int index;
 
     public enum LocationType
     {
@@ -90,7 +93,7 @@ public class Location : MonoBehaviour
         }
     }
 
-    private void Open()
+    public void Open()
     {
         if (currentLocation != null) currentLocation.playerMarker.enabled = false;
 
@@ -110,5 +113,17 @@ public class Location : MonoBehaviour
             OverviewCamera.instance.ShiftPlanet(true, planet.transform.localScale.x * 0.5f);
             DetailsUI.instance.ShowLocation(this);
         }
+
+        RotateCameraToView();
+    }
+
+    public void RotateCameraToView()
+    {
+        OverviewCamera.instance.ViewLocation(rotCoords);
+    }
+
+    public Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles)
+    {
+        return Quaternion.Euler(angles) * (point - pivot) + pivot;
     }
 }

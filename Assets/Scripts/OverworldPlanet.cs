@@ -40,6 +40,7 @@ public class OverworldPlanet : MonoBehaviour
         Overworld.instance.currentPlanetIndex = planetIndex;
         Overworld.instance.HideSolarMap();
         DetailsUI.instance.ShowPlanet(planet);
+        PlacePlayer();
     }
 
     private void Populate()
@@ -59,9 +60,11 @@ public class OverworldPlanet : MonoBehaviour
             pos = RotatePointAroundPivot(pos, transform.position, new Vector3(x, y, z));
             newLocation.transform.position = pos;
             newLocation.transform.rotation = Quaternion.LookRotation(transform.position - pos);
+            newLocation.index = i;
+            newLocation.rotCoords = pos;
 
             //Set the location info
-            if(!merchantAdded)
+            if(!merchantAdded && i == raceCount - 1)
             {
                 newLocation.Initialize(Location.LocationType.Merchant);
                 merchantAdded = true;
@@ -140,6 +143,22 @@ public class OverworldPlanet : MonoBehaviour
         for (int i = 0; i < lines.Count; i++)
         {
             lines[i].enabled = true;
+        }
+    }
+
+    public void PlacePlayer()
+    {
+        if(Location.currentLocation != null && GameObject.Equals(Location.currentLocation.transform.parent.gameObject, gameObject))
+        {
+            Location.currentLocation.Open();
+        }
+        else if(SaveLoadSystem.CurrentLocationIndex() > -1)
+        {
+            locations[SaveLoadSystem.CurrentLocationIndex()].GetComponent<Location>()?.Open();
+        }
+        else
+        {
+            locations[0].GetComponent<Location>()?.Open();
         }
     }
 

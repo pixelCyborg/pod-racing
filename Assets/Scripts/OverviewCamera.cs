@@ -43,6 +43,11 @@ public class OverviewCamera : MonoBehaviour
         camSpeed = Vector3.Lerp(camSpeed, Vector3.zero, Time.deltaTime * 8f);
     }
 
+    public void ViewLocation(Vector3 rotation)
+    {
+        anchor.transform.DORotate(rotation, 0.5f);
+    }
+
     public void ShiftPlanet(bool enabled, float amount = 1.0f)
     {
         transform.DOLocalMoveX(enabled ? amount : 0.0f, transitionTime);
