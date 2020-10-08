@@ -586,7 +586,7 @@
 								<Effect Name="High_Pass_60Hz" ID="{F9627628-0B10-4272-BC30-D4C20423CB38}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 									<PropertyList>
 										<Property Name="FilterTypeBand1" Type="int32" Value="1"/>
-										<Property Name="FrequencyBand1" Type="Real32" Value="60"/>
+										<Property Name="FrequencyBand1" Type="Real32" Value="103"/>
 										<Property Name="OnOffBand2" Type="bool" Value="False"/>
 										<Property Name="OnOffBand3" Type="bool" Value="False"/>
 									</PropertyList>
@@ -1678,10 +1678,11 @@
 					<ChildrenList>
 						<Effect Name="Fear_no_Evil" ID="{A1F17D99-0801-4F32-B74E-ADB2D9ACC556}" PluginName="Wwise Harmonizer" CompanyID="0" PluginID="138" PluginType="3">
 							<PropertyList>
-								<Property Name="DryLevel" Type="Real32" Value="-3"/>
-								<Property Name="Voice1Pitch" Type="Real32" Value="-100"/>
+								<Property Name="DryLevel" Type="Real32" Value="-4"/>
+								<Property Name="Voice1Pitch" Type="Real32" Value="-2100"/>
 								<Property Name="Voice2Enable" Type="bool" Value="True"/>
-								<Property Name="Voice2Pitch" Type="Real32" Value="100"/>
+								<Property Name="Voice2Pitch" Type="Real32" Value="-2300"/>
+								<Property Name="WetLevel" Type="Real32" Value="8"/>
 							</PropertyList>
 						</Effect>
 						<Effect Name="Secret_message" ID="{2F5DE612-1AAD-4A84-8FB4-3E66521C920E}" PluginName="Wwise Harmonizer" CompanyID="0" PluginID="138" PluginType="3">
@@ -1957,6 +1958,15 @@
 									<PropertyList>
 										<Property Name="DryLevel" Type="Real32" Value="0"/>
 										<Property Name="Pitch" Type="Real32" Value="-1200"/>
+									</PropertyList>
+								</Effect>
+								<Effect Name="New_iZotope_Trash_Distortion" ID="{2F9BCADE-479D-41B0-9016-42FF9330ED48}" PluginName="iZotope Trash Distortion" CompanyID="259" PluginID="3" PluginType="3">
+									<PropertyList>
+										<Property Name="Distortion1InputGain" Type="Real32" Value="-11"/>
+										<Property Name="Distortion1Overdrive" Type="Real32" Value="9"/>
+										<Property Name="Distortion1Type" Type="int32" Value="24"/>
+										<Property Name="Distortion2InputGain" Type="Real32" Value="1"/>
+										<Property Name="Distortion2Trash" Type="Real32" Value="0.8"/>
 									</PropertyList>
 								</Effect>
 							</ChildrenList>

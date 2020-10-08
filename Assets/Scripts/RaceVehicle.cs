@@ -59,10 +59,12 @@ public class RaceVehicle : MonoBehaviour
     [Header("Audio")]
 
     [Range(0f, 1f)]
+    public AK.Wwise.RTPC Speed;
     public float speedDetune = 2.0f;
     public AudioSource engineSource;
     public AudioSource boostSource;
     public AudioSource strafeSource;
+    public float EngineSpeed;
 
     [Header("Mesh")]
     public Transform meshParent;
@@ -146,7 +148,7 @@ public class RaceVehicle : MonoBehaviour
             particleAnims.AddRange(particleAnchors[i].GetComponentsInChildren<Animator>());
         }
     }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -429,7 +431,7 @@ public class RaceVehicle : MonoBehaviour
 
     //FOR PHERYL - this is calculates what value out of our max speed we are moving, on a scale from 0 - 1.0
     //It is possible to exceed 1.0 (100%) speed with boost pads and engine boost
-    private float CurrentOutOfMaxSpeed()
+    public float CurrentOutOfMaxSpeed()
     {
         float val = 0.0f;
         val = velocity_throttle / MaxSpeed();
@@ -439,8 +441,9 @@ public class RaceVehicle : MonoBehaviour
     //FOR PHERYL - this is where I am currently shifting the pitch of the engine sound, to make it sound more dynamic
     private void UpdateEngineSound()
     {
-                        //Base Sound + Increase pitch based on current speed * a multiplicative factor that we establish
-        engineSource.pitch = 1.0f + (CurrentOutOfMaxSpeed() * speedDetune);
+        //Base Sound + Increase pitch based on current speed * a multiplicative factor that we establish
+        EngineSpeed = 1.0f + (CurrentOutOfMaxSpeed() * speedDetune);
+        //AkSoundEngine.SetRTPCValue("Speed", CurrentOutOfMaxSpeed());
     }
 
     public void UpdateUI()

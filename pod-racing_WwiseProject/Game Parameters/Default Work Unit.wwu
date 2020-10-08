@@ -3,7 +3,13 @@
 	<GameParameters>
 		<WorkUnit Name="Default Work Unit" ID="{D3B32B1B-8009-47AD-8A17-FBBA5431832A}" PersistMode="Standalone">
 			<ChildrenList>
-				<GameParameter Name="Speed" ID="{418DE9E2-F210-4EBD-9EA0-D5F109BEB970}"/>
+				<GameParameter Name="Speed" ID="{418DE9E2-F210-4EBD-9EA0-D5F109BEB970}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="1.2"/>
+						<Property Name="RTPCRamping" Type="int16" Value="1"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>
