@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" SchemaVersion="97">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Vehicle" ID="{B96977C9-82F4-4072-9CEC-F98E9E86A68E}" ShortID="437468536">
+					<ChildrenList>
+						<Event Name="Play_Engine" ID="{548134A1-6A81-4D5A-860F-3646C8A8C7A3}">
+							<ChildrenList>
+								<Action Name="" ID="{13149333-BA6A-4C76-B9FF-ED6EB592D8B8}" ShortID="949592168">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Engine" ID="{1C4406D6-6C22-4C00-8440-C661DE3A4B32}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Speed" ID="{18A9A282-8012-4BD4-81DB-6358EEDA6022}">
+							<ChildrenList>
+								<Action Name="" ID="{62B78A08-9E05-48FC-A9D4-AAA78B07B60D}" ShortID="888237441">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Speed" ID="{418DE9E2-F210-4EBD-9EA0-D5F109BEB970}" WorkUnitID="{D3B32B1B-8009-47AD-8A17-FBBA5431832A}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="CPU_Engine" ID="{2C8750FA-EEDD-49CD-9CDE-9E718160A2D9}">
+							<ChildrenList>
+								<Action Name="" ID="{ED19A531-60A3-490C-B8F6-2B52FE9C6128}" ShortID="229336413">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TEMP CPU Engine" ID="{45B66C4C-1623-4907-B506-340EF8E9897F}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

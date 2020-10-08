@@ -1,0 +1,16 @@
+Event	ID	Name			Wwise Object Path	Notes
+	639345804	Play_Engine			\Default Work Unit\Vehicle\Play_Engine	
+	640949982	Speed			\Default Work Unit\Vehicle\Speed	
+	3478880738	CPU_Engine			\Default Work Unit\Vehicle\CPU_Engine	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	640949982	Speed			\Default Work Unit\Speed	
+
+Effect plug-ins	ID	Name	Type				Notes
+	819943492	Fear_no_Evil	Wwise Harmonizer			
+	1291433344	Bass	Wwise Flanger			
+	3604890626	High_Pass_60Hz	Wwise Parametric EQ			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	202614530	TEMP Engine Loop	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Windows\SFX\TEMP Engine Loop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Vehicle_Player\Engine\TEMP Engine Loop		1102104
+

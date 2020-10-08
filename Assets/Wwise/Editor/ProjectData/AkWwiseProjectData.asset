@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 98e51795705ae6459b09d0564ef925f5
     GuidInternal: 
-    m_lastTime: -8586005342355436366
+    m_lastTime: -8585996692257395182
     List:
     - name: Main
       guid: 97469d7158e8d34bbda01ba62633a620
@@ -68,8 +68,34 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: c905a02d4796814eb63440e23350f0f2
     GuidInternal: 
-    m_lastTime: -8586005400394238378
-    List: []
+    m_lastTime: -8585996692419955382
+    List:
+    - name: Play_Engine
+      guid: a1348154816a5a4d860f3646c8a8c7a3
+      id: 639345804
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Vehicle
+        ObjectType: 4
+      - ElementName: Play_Engine
+        ObjectType: 3
+      Path: Default Work Unit\Vehicle\Play_Engine
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Vehicle
+      guid: c97769b9f48272409cecf98e9e86a68e
+      id: 2025709351
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Vehicle
+        ObjectType: 4
+      Path: Default Work Unit\Vehicle
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -78,8 +104,17 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 1b2bb3d30980ad478a17fbba5431832a
     GuidInternal: 
-    m_lastTime: -8586005400394848927
-    List: []
+    m_lastTime: -8585999043370101186
+    List:
+    - name: Speed
+      guid: e2e98d4110f2bd4e9ea0d5f109beb970
+      id: 640949982
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Speed
+        ObjectType: 13
+      Path: Default Work Unit\Speed
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -98,7 +133,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 6980d1a4deff7c4db9ee16476cb0c17d
     GuidInternal: 
-    m_lastTime: -8586005400394959036
+    m_lastTime: -8586005305939075704
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -110,6 +145,12 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8586005400395319365
     List: []
-  ExpandedItems: []
+  ExpandedItems:
+  - /pod-racing_WwiseProject
+  - /pod-racing_WwiseProject/Events
+  - /pod-racing_WwiseProject/Events/Default Work Unit
+  - /pod-racing_WwiseProject/Events/Default Work Unit/Vehicle
+  - /pod-racing_WwiseProject/SoundBanks
+  - /pod-racing_WwiseProject/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

@@ -43,6 +43,118 @@
 												</Reference>
 											</ReferenceList>
 										</BlendContainer>
+										<RandomSequenceContainer Name="Engine" ID="{1C4406D6-6C22-4C00-8440-C661DE3A4B32}" ShortID="758328637">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>8</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<RTPCList>
+														<RTPC Name="" ID="{18F35F3E-1922-477D-B380-F8D46E5F5D8F}" ShortID="727483254">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Speed" ID="{418DE9E2-F210-4EBD-9EA0-D5F109BEB970}" WorkUnitID="{D3B32B1B-8009-47AD-8A17-FBBA5431832A}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{DB7DC39E-1405-46EC-B46D-5FC3E8899AEC}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-664</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>Log2</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>1.2</XPos>
+																		<YPos>995</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="4"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-15</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Vehicle Attenuation" ID="{B68FB573-C5DE-49D2-AE4E-A0796A4D0AC0}" WorkUnitID="{DF1A9D18-5DC6-4BE4-9525-2545EC01537A}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B3DF3C7A-FE8B-4F36-AF20-0078A97B6A34}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{6E822FEE-BAE5-4B51-A27D-D2ADE4BE24E6}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="TEMP Engine Loop" ID="{8BFB0696-97D7-4978-B450-C2E3D1A75738}" ShortID="444743494">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B3DF3C7A-FE8B-4F36-AF20-0078A97B6A34}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{6E822FEE-BAE5-4B51-A27D-D2ADE4BE24E6}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="TEMP Engine Loop" ID="{9AEC8F44-48C5-4605-ABC5-88149A7BEC98}">
+															<Language>SFX</Language>
+															<AudioFile>TEMP Engine Loop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="202614530"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="TEMP Engine Loop" ID="{9AEC8F44-48C5-4605-ABC5-88149A7BEC98}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="TEMP Engine Loop_01" ID="{3DCF7AF2-1654-4715-AFB1-D6AC9C4FE4D9}" ShortID="876627026">
+													<PropertyList>
+														<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B3DF3C7A-FE8B-4F36-AF20-0078A97B6A34}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{6E822FEE-BAE5-4B51-A27D-D2ADE4BE24E6}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="TEMP Engine Loop" ID="{745F39EF-9928-446D-B445-FBFD96667146}">
+															<Language>SFX</Language>
+															<AudioFile>TEMP Engine Loop.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="202614530"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="TEMP Engine Loop" ID="{745F39EF-9928-446D-B445-FBFD96667146}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 								</ActorMixer>
 								<SwitchContainer Name="Collisons" ID="{30280E51-314E-471A-82C4-8D4483694ABC}" ShortID="555686347">
@@ -59,6 +171,105 @@
 									</ReferenceList>
 									<GroupingInfo/>
 								</SwitchContainer>
+								<ActorMixer Name="Vehicle_CPU" ID="{00613802-8CD6-40CE-A1CB-C93FD1504B11}" ShortID="1031076504">
+									<PropertyList>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B3DF3C7A-FE8B-4F36-AF20-0078A97B6A34}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Flanger" CompanyID="0" PluginID="125" PluginType="3">
+											<ObjectRef Name="Bass" ID="{AB3CE4D4-B0DD-4FC2-AC1D-30EB749C5911}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{6E822FEE-BAE5-4B51-A27D-D2ADE4BE24E6}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="TEMP CPU Engine" ID="{45B66C4C-1623-4907-B506-340EF8E9897F}" ShortID="103652817">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>8</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<RTPCList>
+														<RTPC Name="" ID="{5F001781-09F4-4647-9B18-B7A91E0519D6}" ShortID="951965581">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Speed" ID="{418DE9E2-F210-4EBD-9EA0-D5F109BEB970}" WorkUnitID="{D3B32B1B-8009-47AD-8A17-FBBA5431832A}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{6E74FD59-67A1-41F0-B28A-6BB0BD88846B}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-697</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1.2</XPos>
+																		<YPos>797</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-20</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Vehicle Attenuation" ID="{B68FB573-C5DE-49D2-AE4E-A0796A4D0AC0}" WorkUnitID="{DF1A9D18-5DC6-4BE4-9525-2545EC01537A}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{B3DF3C7A-FE8B-4F36-AF20-0078A97B6A34}"/>
+												</Reference>
+												<Reference Name="Effect0" PluginName="Wwise Harmonizer" CompanyID="0" PluginID="138" PluginType="3">
+													<ObjectRef Name="Fear_no_Evil" ID="{A1F17D99-0801-4F32-B74E-ADB2D9ACC556}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+												</Reference>
+												<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+													<ObjectRef Name="High_Pass_60Hz" ID="{F9627628-0B10-4272-BC30-D4C20423CB38}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{6E822FEE-BAE5-4B51-A27D-D2ADE4BE24E6}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="TEMP Engine Loop" ID="{2B83B2F4-6A96-499C-9FAB-0EB60B04BAC5}">
+													<Language>SFX</Language>
+													<AudioFile>TEMP Engine Loop.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="202614530"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="TEMP Engine Loop" ID="{2B83B2F4-6A96-499C-9FAB-0EB60B04BAC5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</ActorMixer>
 							</ChildrenList>
 						</ActorMixer>
 						<ActorMixer Name="Track" ID="{BC90A2F3-3842-421F-A303-E3D4B0714409}" ShortID="411345606">

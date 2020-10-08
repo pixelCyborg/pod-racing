@@ -20,6 +20,28 @@
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3478880738" Name="CPU_Engine" ObjectPath="\Events\Default Work Unit\Vehicle\CPU_Engine" MaxAttenuation="175.000000" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="202614530" Language="SFX">
+							<ShortName>TEMP Engine Loop.wav</ShortName>
+							<Path>SFX\TEMP Engine Loop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="639345804" Name="Play_Engine" ObjectPath="\Events\Default Work Unit\Vehicle\Play_Engine" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="202614530" Language="SFX">
+							<ShortName>TEMP Engine Loop.wav</ShortName>
+							<Path>SFX\TEMP Engine Loop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="640949982" Name="Speed" ObjectPath="\Events\Default Work Unit\Vehicle\Speed" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="640949982" Name="Speed" ObjectPath="\Game Parameters\Default Work Unit\Speed"/>
+			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

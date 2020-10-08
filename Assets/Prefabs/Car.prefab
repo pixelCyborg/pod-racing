@@ -47,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -490,7 +491,6 @@ MonoBehaviour:
   boostCost: 25
   boostRegen: 15
   strafeSpeed: 100
-  maxStrafe: 100
   strafeDrag: 0.1
   turnSpeed: 0.5
   maxTurn: 1.6
@@ -501,10 +501,15 @@ MonoBehaviour:
   engineParticles: {fileID: 3366917390598209834}
   boostTrails: {fileID: 3271666904074339489}
   windstreaks: {fileID: 5513571838337886697}
+  Speed:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
   speedDetune: 1
   engineSource: {fileID: 0}
   boostSource: {fileID: 0}
   strafeSource: {fileID: 3366917390150744823}
+  EngineSpeed: 0
   meshParent: {fileID: 7448806991845943437}
   isPlayer: 0
   lapTimes: []
