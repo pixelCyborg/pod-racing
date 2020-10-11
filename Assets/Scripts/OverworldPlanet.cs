@@ -61,7 +61,7 @@ public class OverworldPlanet : MonoBehaviour
             newLocation.transform.position = pos;
             newLocation.transform.rotation = Quaternion.LookRotation(transform.position - pos);
             newLocation.index = i;
-            newLocation.rotCoords = pos;
+            newLocation.rotCoords = new Vector3(x,y,z);
 
             //Set the location info
             if(!merchantAdded && i == raceCount - 1)

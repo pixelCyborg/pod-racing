@@ -10,6 +10,8 @@ public class OverviewCamera : MonoBehaviour
     public Vector3 planetOffset;
     private Vector3 origPos;
     private Vector3 origRot;
+    private Vector3 origCameraPos;
+    private Vector3 origCameraRot;
     private float origZPos;
     private Transform anchor;
     public static OverviewCamera instance;
@@ -19,6 +21,8 @@ public class OverviewCamera : MonoBehaviour
     public UnityEvent onUnfocus;
     public bool rotDisabled = false;
 
+    public Vector3 offset;
+
 
     private void Start()
     {
@@ -26,6 +30,9 @@ public class OverviewCamera : MonoBehaviour
         origPos = anchor.position;
         origRot = anchor.rotation.eulerAngles;
         origZPos = transform.localPosition.z;
+
+        origCameraPos = transform.localPosition;
+        origCameraRot = transform.localRotation.eulerAngles;
         instance = this;
     }
 
@@ -45,7 +52,7 @@ public class OverviewCamera : MonoBehaviour
 
     public void ViewLocation(Vector3 rotation)
     {
-        anchor.transform.DORotate(rotation, 0.5f);
+        //anchor.DORotate(rotation, 0.5f);
     }
 
     public void ShiftPlanet(bool enabled, float amount = 1.0f)
