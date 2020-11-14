@@ -5,7 +5,11 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{719D4697-E858-4BD3-BDA0-1BA62633A620}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_Boost" ID="{2548CD52-DD1E-40D1-B451-6CD5EEB7DBF6}" WorkUnitID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Boost" ID="{57A29C6E-43CF-461B-AA3B-D454EE8E1B23}" WorkUnitID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Collision_Wall" ID="{968EAEC8-E7D9-46E9-A76F-4D119D3AC100}" WorkUnitID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="CPU_Engine" ID="{2C8750FA-EEDD-49CD-9CDE-9E718160A2D9}" WorkUnitID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Collision_Vehicle" ID="{5E36D160-EC5F-4A58-8BD4-E0757D24065F}" WorkUnitID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Speed" ID="{18A9A282-8012-4BD4-81DB-6358EEDA6022}" WorkUnitID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Engine" ID="{548134A1-6A81-4D5A-860F-3646C8A8C7A3}" WorkUnitID="{2DA005C9-9647-4E81-B634-40E23350F0F2}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>

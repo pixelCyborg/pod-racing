@@ -23836,6 +23836,30 @@ PrefabInstance:
       propertyPath: magnetizeSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3366917390609428504, guid: 63656eba3c3224643a03ce89b75c47fc,
+        type: 3}
+      propertyPath: Play_Boost.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ffd0e1e81c7de348af1dfd92912fa47,
+        type: 2}
+    - target: {fileID: 3366917390609428504, guid: 63656eba3c3224643a03ce89b75c47fc,
+        type: 3}
+      propertyPath: Stop_Boost.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fde6da704408e946a9092652c5aa52d,
+        type: 2}
+    - target: {fileID: 3366917390609428504, guid: 63656eba3c3224643a03ce89b75c47fc,
+        type: 3}
+      propertyPath: Collision_Wall.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 175dd8d4cb3d50d4fac0cd752c1bc079,
+        type: 2}
+    - target: {fileID: 3366917390609428504, guid: 63656eba3c3224643a03ce89b75c47fc,
+        type: 3}
+      propertyPath: Collision_Vehicle.WwiseObjectReference
+      value: 
+      objectReference: {fileID: 11400000, guid: cd1621fa81283844dbbfae8e22d3c445,
+        type: 2}
     - target: {fileID: 3366917390609428506, guid: 63656eba3c3224643a03ce89b75c47fc,
         type: 3}
       propertyPath: m_Enabled

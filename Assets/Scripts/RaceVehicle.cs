@@ -60,11 +60,17 @@ public class RaceVehicle : MonoBehaviour
 
     [Range(0f, 1f)]
     public AK.Wwise.RTPC Speed;
+    public AK.Wwise.Event Play_Boost;
+    public AK.Wwise.Event Stop_Boost;
+    public AK.Wwise.Event Collision_Wall;
+    public AK.Wwise.Event Collision_Vehicle;
+
     public float speedDetune = 2.0f;
     public AudioSource engineSource;
     public AudioSource boostSource;
     public AudioSource strafeSource;
     public float EngineSpeed;
+
 
     [Header("Mesh")]
     public Transform meshParent;
@@ -120,7 +126,7 @@ public class RaceVehicle : MonoBehaviour
         if (customPhysicsEnabled) strafe = _strafe;
         else strafe = 0f;
     }
-
+    //Boost Sound
     public void SetBoost(bool _boost)
     {
         if(boosting != _boost)
@@ -129,10 +135,12 @@ public class RaceVehicle : MonoBehaviour
             {
                 //currentFuel -= boostCost * 0.2f;
                 boostSource.Play();
+                Play_Boost.Post(gameObject);
             }
             else
             {
                 boostSource.Stop();
+                Stop_Boost.Post(gameObject);
             }
         }
         boosting = _boost;
@@ -509,11 +517,12 @@ public class RaceVehicle : MonoBehaviour
         {
             velocity_strafe = -velocity_strafe;
             velocity_throttle *= 0.8f;
+            Collision_Wall.Post(gameObject);
         }
         //We hit another vehicle
         else
         {
-
+            Collision_Vehicle.Post(gameObject);
         }
 
         Vector3 down = -transform.up;

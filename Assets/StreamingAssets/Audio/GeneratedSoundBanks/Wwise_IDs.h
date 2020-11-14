@@ -13,9 +13,13 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID COLLISION_VEHICLE = 1434186626U;
+        static const AkUniqueID COLLISION_WALL = 769692662U;
         static const AkUniqueID CPU_ENGINE = 3478880738U;
+        static const AkUniqueID PLAY_BOOST = 3783768423U;
         static const AkUniqueID PLAY_ENGINE = 639345804U;
         static const AkUniqueID SPEED = 640949982U;
+        static const AkUniqueID STOP_BOOST = 3966495329U;
     } // namespace EVENTS
 
     namespace SWITCHES

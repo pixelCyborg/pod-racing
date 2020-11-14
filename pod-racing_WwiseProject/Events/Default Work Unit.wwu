@@ -10,7 +10,7 @@
 								<Action Name="" ID="{13149333-BA6A-4C76-B9FF-ED6EB592D8B8}" ShortID="949592168">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Engine" ID="{1C4406D6-6C22-4C00-8440-C661DE3A4B32}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
+											<ObjectRef Name="Engine_RPM" ID="{3DBE37F9-DB18-4B6D-872D-C377556CFB3D}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -36,6 +36,57 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="TEMP CPU Engine" ID="{45B66C4C-1623-4907-B506-340EF8E9897F}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Boost" ID="{2548CD52-DD1E-40D1-B451-6CD5EEB7DBF6}">
+							<ChildrenList>
+								<Action Name="" ID="{27145D9B-04F5-4D80-A32A-0B7E82A12030}" ShortID="61439390">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Engine Boost" ID="{786E213A-70EF-4FCD-BEAE-8D4FE26E0E78}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Boost" ID="{57A29C6E-43CF-461B-AA3B-D454EE8E1B23}">
+							<ChildrenList>
+								<Action Name="" ID="{E40C72B3-ABA5-48E4-8540-0DD0AF27A7F5}" ShortID="215722229">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Engine Boost" ID="{786E213A-70EF-4FCD-BEAE-8D4FE26E0E78}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Track Elements" ID="{550A2609-2617-4FCD-897A-45B2CD8E4128}" ShortID="486319389">
+					<ChildrenList>
+						<Event Name="Collision_Wall" ID="{968EAEC8-E7D9-46E9-A76F-4D119D3AC100}">
+							<ChildrenList>
+								<Action Name="" ID="{F5BF81EA-1A35-41B7-B227-BBA6BE48DF70}" ShortID="774590162">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Collide_Wall" ID="{E0D21BE5-96A0-4C3D-9D1A-E3B1A2A73A84}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Collision_Vehicle" ID="{5E36D160-EC5F-4A58-8BD4-E0757D24065F}">
+							<ChildrenList>
+								<Action Name="" ID="{F4571F7D-F145-4C96-A89C-EF0234EF5B5C}" ShortID="291166183">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Collide_Vehicle" ID="{AD39EB7F-2E04-4BB9-AF35-88DE7E113C7D}" WorkUnitID="{1249B42F-7C54-412F-99BD-A9D980507A0D}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

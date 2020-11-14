@@ -21,6 +21,22 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1434186626" Name="Collision_Vehicle" ObjectPath="\Events\Default Work Unit\Track Elements\Collision_Vehicle" DurationType="OneShot" DurationMin="0.885717" DurationMax="1.070475">
+					<IncludedMemoryFiles>
+						<File Id="953367662" Language="SFX">
+							<ShortName>Vehicle Bump.wav</ShortName>
+							<Path>SFX\Vehicle Bump_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="769692662" Name="Collision_Wall" ObjectPath="\Events\Default Work Unit\Track Elements\Collision_Wall" DurationType="OneShot" DurationMin="0.403535" DurationMax="0.643539">
+					<IncludedMemoryFiles>
+						<File Id="984426380" Language="SFX">
+							<ShortName>Wall Bump.wav</ShortName>
+							<Path>SFX\Wall Bump_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3478880738" Name="CPU_Engine" ObjectPath="\Events\Default Work Unit\Vehicle\CPU_Engine" MaxAttenuation="175.000000" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="202614530" Language="SFX">
@@ -29,15 +45,36 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3783768423" Name="Play_Boost" ObjectPath="\Events\Default Work Unit\Vehicle\Play_Boost" DurationType="OneShot" DurationMin="5.681667" DurationMax="5.681667">
+					<IncludedMemoryFiles>
+						<File Id="148172067" Language="SFX">
+							<ShortName>Engine Boost.wav</ShortName>
+							<Path>SFX\Engine Boost_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="639345804" Name="Play_Engine" ObjectPath="\Events\Default Work Unit\Vehicle\Play_Engine" DurationType="Infinite">
 					<IncludedMemoryFiles>
-						<File Id="202614530" Language="SFX">
-							<ShortName>TEMP Engine Loop.wav</ShortName>
-							<Path>SFX\TEMP Engine Loop_D79FB2B7.wem</Path>
+						<File Id="45417373" Language="SFX">
+							<ShortName>Engine_Low-Mid Synth.wav</ShortName>
+							<Path>SFX\Engine_Low-Mid Synth_D79FB2B7.wem</Path>
+						</File>
+						<File Id="104673426" Language="SFX">
+							<ShortName>Engine_Mid.wav</ShortName>
+							<Path>SFX\Engine_Mid_A5349AF9.wem</Path>
+						</File>
+						<File Id="818027745" Language="SFX">
+							<ShortName>Engine_Tremelo.wav</ShortName>
+							<Path>SFX\Engine_Tremelo_29FBDC71.wem</Path>
+						</File>
+						<File Id="874152396" Language="SFX">
+							<ShortName>Engine_Idle.wav</ShortName>
+							<Path>SFX\Engine_Idle_350FC752.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="640949982" Name="Speed" ObjectPath="\Events\Default Work Unit\Vehicle\Speed" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="3966495329" Name="Stop_Boost" ObjectPath="\Events\Default Work Unit\Vehicle\Stop_Boost" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
 			<GameParameters>
 				<GameParameter Id="640949982" Name="Speed" ObjectPath="\Game Parameters\Default Work Unit\Speed"/>

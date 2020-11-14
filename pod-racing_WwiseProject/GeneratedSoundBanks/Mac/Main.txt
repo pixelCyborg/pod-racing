@@ -1,16 +1,26 @@
 Event	ID	Name			Wwise Object Path	Notes
 	639345804	Play_Engine			\Default Work Unit\Vehicle\Play_Engine	
 	640949982	Speed			\Default Work Unit\Vehicle\Speed	
+	769692662	Collision_Wall			\Default Work Unit\Track Elements\Collision_Wall	
+	1434186626	Collision_Vehicle			\Default Work Unit\Track Elements\Collision_Vehicle	
 	3478880738	CPU_Engine			\Default Work Unit\Vehicle\CPU_Engine	
+	3783768423	Play_Boost			\Default Work Unit\Vehicle\Play_Boost	
+	3966495329	Stop_Boost			\Default Work Unit\Vehicle\Stop_Boost	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	640949982	Speed			\Default Work Unit\Speed	
 
 Effect plug-ins	ID	Name	Type				Notes
 	819943492	Fear_no_Evil	Wwise Harmonizer			
-	1291433344	Bass	Wwise Flanger			
 	3604890626	High_Pass_60Hz	Wwise Parametric EQ			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	202614530	TEMP Engine Loop	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\TEMP Engine Loop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Vehicle_Player\Engine\TEMP Engine Loop		1102104
+	45417373	Engine_Low-Mid Synth	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\Engine_Low-Mid Synth_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Vehicle_Player\Engine_RPM\Engine_Low-Mid Synth		3089780
+	104673426	Engine_Mid	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\Engine_Mid_A5349AF9.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Vehicle_Player\Engine_RPM\Engine_Mid		1851320
+	148172067	Engine Boost	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\Engine Boost_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Engine Boost		1090944
+	202614530	TEMP CPU Engine	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\TEMP Engine Loop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Vehicle_CPU\TEMP CPU Engine		1102104
+	818027745	Engine_Tremelo	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\Engine_Tremelo_29FBDC71.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Vehicle_Player\Engine_RPM\Engine_Tremelo		2208916
+	874152396	Engine_Idle	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\Engine_Idle_350FC752.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Vehicle_Player\Engine_RPM\Engine_Idle		1833584
+	953367662	Collide_Vehicle	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\Vehicle Bump_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Collisions\Collide_Vehicle		191168
+	984426380	Collide_Wall	C:\Users\Alex\Documents\GitHub\pod-racing\pod-racing_WwiseProject\.cache\Mac\SFX\Wall Bump_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\World\Vehicles\Collisions\Collide_Wall		83392
 
